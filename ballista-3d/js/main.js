@@ -1,4 +1,4 @@
-import { defaultParams, simulate, summarize, monteCarlo } from './physics.js';
+import { defaultParams, simulate, summarize, monteCarloAsync } from './physics.js';
 import { EarthScene } from './earth3d.js';
 import { View } from './scene3d.js';
 import { Chart } from './charts.js';
@@ -130,7 +130,9 @@ function refreshAimOverlay() {
 }
 
 // ---------------------------------------------------------------- run ------
-function run() {
+let runId = 0;
+async function run() {
+  const id = ++runId;
   const t0 = performance.now();
   const params = JSON.parse(JSON.stringify(state.params));
   delete params._preset;
@@ -142,22 +144,29 @@ function run() {
 
   state.result = simulate(params);
   state.summary = summarize(state.result);
-  let mc = null;
-  if (state.params._mc) {
-    const t1 = performance.now();
-    mc = monteCarlo(params, { samples: mcSamples, seed: mcSeed, sigmas: mcSigmas });
-    state.mc = mc;
-    state.mcMs = performance.now() - t1;
-  } else state.mc = null;
 
-  const ms = performance.now() - t0;
   const L = params.launch;
   scene.setLaunch(L.lat, L.lon);
   scene.setTrajectory(state.result.samples);
   scene.setImpact(state.result.impact.lat, state.result.impact.lon);
   scene.setSurfacePath(L, state.result.impact);
-  scene.setDispersion(state.mc, params.launcher.azimuth);
   refreshAimOverlay();
+
+  let mc = null;
+  if (state.params._mc) {
+    const t1 = performance.now();
+    ui.setRunStatus(`sim done in ${(t1 - t0).toFixed(0)} ms · MC 0/${mcSamples}…`);
+    mc = await monteCarloAsync(params, {
+      samples: mcSamples, seed: mcSeed, sigmas: mcSigmas,
+      onProgress: (i, n) => { if (id === runId) ui.setRunStatus(`MC ${i}/${n}…`); },
+    });
+    if (id !== runId) return; // superseded by a newer run
+    state.mc = mc;
+    state.mcMs = performance.now() - t1;
+  } else state.mc = null;
+
+  const ms = performance.now() - t0;
+  scene.setDispersion(state.mc, params.launcher.azimuth);
   renderResults(state, state.summary, state.mc);
 
   const mapped = mapSamples(state.result.samples);
@@ -235,6 +244,7 @@ window.addEventListener('resize', () => scene.resize());
 
 // ------------------------------------------------------------- main loop ---
 let last = performance.now();
+let hudAcc = 1;
 function frame(now) {
   const dt = Math.min((now - last) / 1000, 0.1);
   last = now;
@@ -250,7 +260,8 @@ function frame(now) {
     timeSlider.value = Math.round(state.playT * 10);
     chartAlt.setPlayhead(state.playT);
     chartSpeed.setPlayhead(state.playT);
-    updateHud();
+    hudAcc += dt;
+    if (hudAcc >= 0.1) { hudAcc = 0; updateHud(); } // throttle DOM writes
   }
   scene.update(dt);
   scene.render();

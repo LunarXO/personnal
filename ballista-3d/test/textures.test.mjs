@@ -20,7 +20,7 @@ for (let y = 0; y < 128; y += 2) {
     const lon = ((x + 0.5) / 256) * 360 - 180;
     const mx = Math.min(LAND_MASK_W - 1, Math.floor(((lon + 180) / 360) * LAND_MASK_W));
     const my = Math.min(LAND_MASK_H - 1, Math.floor(((90 - lat) / 180) * LAND_MASK_H));
-    const isLand = (mask[my * 45 + (mx >> 3)] >> (7 - (mx & 7))) & 1;
+    const isLand = (mask[my * ((LAND_MASK_W + 7) >> 3) + (mx >> 3)] >> (7 - (mx & 7))) & 1;
     const i = (y * 256 + x) * 4;
     if (isLand) { landN++; if (day.data[i + 1] > day.data[i + 2] || day.data[i] > 200) landGreen++; }
     else { oceanN++; if (day.data[i + 2] > day.data[i]) oceanBlue++; }
@@ -37,7 +37,7 @@ for (let y = 0; y < 128; y += 2) {
     const lon = ((x + 0.5) / 256) * 360 - 180;
     const mx = Math.min(LAND_MASK_W - 1, Math.floor(((lon + 180) / 360) * LAND_MASK_W));
     const my = Math.min(LAND_MASK_H - 1, Math.floor(((90 - lat) / 180) * LAND_MASK_H));
-    const isLand = (mask[my * 45 + (mx >> 3)] >> (7 - (mx & 7))) & 1;
+    const isLand = (mask[my * ((LAND_MASK_W + 7) >> 3) + (mx >> 3)] >> (7 - (mx & 7))) & 1;
     const i = (y * 256 + x) * 4;
     if (night.data[i] > 120) { lights++; if (!isLand) lightsOnOcean++; }
     if (!isLand) oceanN2++;

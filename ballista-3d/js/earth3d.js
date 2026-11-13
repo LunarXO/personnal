@@ -207,7 +207,7 @@ export class EarthScene {
     const { up, east, north } = surfaceBasis(lat, lon);
     this.launchDrawable.model = mat4FromBasis(p, east, up, north, 1);
     this.launchLabel.center = v3.add(p, v3.scale(up, 26));
-    this.launchLabel.setText(`LAUNCH  ${lat.toFixed(3)}\u00b0, ${lon.toFixed(3)}\u00b0`);
+    this.launchLabel.setText(`LAUNCH  ${lat.toFixed(3)}°, ${lon.toFixed(3)}°`);
     this.launchLabel.visible = true;
     // ENU axes
     if (this.axes) for (const a of this.axes) this.view.remove(a);
@@ -242,7 +242,7 @@ export class EarthScene {
     this.impactDrawable.model = mat4FromBasis(p, east, up, north, 1);
     this.impactDrawable.visible = true;
     this.impactLabel.center = v3.add(p, v3.scale(up, 26));
-    this.impactLabel.setText(`${label}  ${lat.toFixed(3)}\u00b0, ${lon.toFixed(3)}\u00b0`);
+    this.impactLabel.setText(`${label}  ${lat.toFixed(3)}°, ${lon.toFixed(3)}°`);
     this.impactLabel.visible = true;
   }
 

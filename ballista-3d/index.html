@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ballista 3D — Professional Projectile Trajectory Simulator</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header id="topbar">
+  <div class="brand">BALLISTA<span class="brand-accent">3D</span></div>
+  <div class="tagline">Professional projectile &amp; rocket trajectory prediction — WGS84 · J2 · ISA · Mach-dependent drag · Monte&nbsp;Carlo</div>
+  <div class="top-actions">
+    <select id="scenarioSelect" title="Load a scenario preset"></select>
+    <button id="runBtn" class="primary">▶ Run simulation</button>
+    <button id="exportJsonBtn" title="Download params + results as JSON">Export JSON</button>
+    <button id="exportCsvBtn" title="Download trajectory samples as CSV">Export CSV</button>
+    <button id="saveBtn" title="Save scenario to browser storage">Save</button>
+    <button id="loadBtn" title="Load scenario from browser storage">Load</button>
+  </div>
+</header>
+
+<div id="main">
+  <aside id="panel">
+    <section class="card" id="sec-launch">
+      <h2>Launch site &amp; firing solution</h2>
+      <div class="hint">Click on the globe to set the launch point.</div>
+      <div class="fields" id="fields-launch"></div>
+    </section>
+
+    <section class="card" id="sec-launcher">
+      <h2>Launcher</h2>
+      <div class="fields" id="fields-launcher"></div>
+      <div id="stagesWrap"></div>
+      <button id="addStageBtn" class="small hidden">+ Add stage</button>
+    </section>
+
+    <section class="card" id="sec-projectile">
+      <h2>Projectile</h2>
+      <div class="fields" id="fields-projectile"></div>
+      <div class="row">
+        <label class="filebtn">Upload 3D model (.glb / .gltf / .stl)
+          <input type="file" id="modelFile" accept=".glb,.gltf,.stl" hidden />
+        </label>
+      </div>
+      <div id="modelInfo" class="hint">No custom model loaded — using preset shape.</div>
+      <div class="row">
+        <label>Density (kg/m³) <input type="number" id="densityInput" value="7800" step="100" class="num" /></label>
+        <button id="autoMassBtn" class="small" title="mass = model volume × density">Mass from model</button>
+        <button id="autoAreaBtn" class="small" title="reference area = model silhouette area">Area from model</button>
+      </div>
+      <label class="cdlabel">Cd(Mach) table — one "mach, cd" per line
+        <textarea id="cdTableInput" rows="5" spellcheck="false"></textarea>
+      </label>
+    </section>
+
+    <section class="card" id="sec-env">
+      <h2>Environment</h2>
+      <div class="fields" id="fields-env"></div>
+    </section>
+
+    <section class="card" id="sec-sim">
+      <h2>Simulation &amp; uncertainty</h2>
+      <div class="fields" id="fields-sim"></div>
+      <div class="siggrid" id="sigGrid"></div>
+      <div class="runrow">
+        <button id="runBtn2" class="primary">▶ Run simulation</button>
+        <span id="runStatus" class="hint"></span>
+      </div>
+    </section>
+  </aside>
+
+  <section id="viewport">
+    <div id="scene"></div>
+    <div id="hud" class="hidden">
+      <div><span>t</span><b id="hudT">0.0 s</b></div>
+      <div><span>altitude</span><b id="hudAlt">0 m</b></div>
+      <div><span>speed</span><b id="hudSpeed">0 m/s</b></div>
+      <div><span>Mach</span><b id="hudMach">0.00</b></div>
+      <div><span>dyn. press.</span><b id="hudQ">0 kPa</b></div>
+      <div><span>range</span><b id="hudRange">0 km</b></div>
+      <div><span>mass</span><b id="hudMass">—</b></div>
+      <div><span>lat/lon</span><b id="hudPos">—</b></div>
+    </div>
+    <div id="previewWrap" class="hidden">
+      <canvas id="preview" width="220" height="170"></canvas>
+      <div id="previewLabel" class="hint"></div>
+    </div>
+    <div id="timeline">
+      <button id="playBtn" title="Play / pause">⏸</button>
+      <input type="range" id="timeSlider" min="0" max="1000" value="0" step="1" />
+      <span id="timeLabel">0.0 / 0.0 s</span>
+      <select id="speedSelect" title="Playback speed">
+        <option value="1">1×</option>
+        <option value="4">4×</option>
+        <option value="16" selected>16×</option>
+        <option value="64">64×</option>
+        <option value="256">256×</option>
+      </select>
+      <label class="chk"><input type="checkbox" id="followChk" /> follow</label>
+      <button id="camGlobalBtn" class="small">Globe</button>
+      <button id="camLaunchBtn" class="small">Launch</button>
+      <button id="camImpactBtn" class="small">Impact</button>
+    </div>
+  </section>
+
+  <aside id="results">
+    <section class="card">
+      <h2>Prediction</h2>
+      <div id="statsGrid" class="stats"></div>
+    </section>
+    <section class="card">
+      <h2>Flight profile</h2>
+      <canvas id="chartAlt" class="chart"></canvas>
+      <canvas id="chartSpeed" class="chart"></canvas>
+    </section>
+    <section class="card hidden" id="mcCard">
+      <h2>Landing dispersion (Monte Carlo)</h2>
+      <div id="mcStats" class="stats"></div>
+    </section>
+  </aside>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

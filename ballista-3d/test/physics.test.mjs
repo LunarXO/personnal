@@ -1,8 +1,9 @@
 import {
-  simulate, summarize, monteCarlo, monteCarloAsync, defaultParams, normalizeParams,
+  simulate, summarize, monteCarlo, defaultParams, normalizeParams,
   atmosphere, cdAt, geodeticToEcef, ecefToGeodetic, enuToEcef, gravityEcef,
   WGS84, greatCircleKm,
 } from '../js/physics.js';
+import { monteCarloAsync } from '../js/mc.js';
 
 let passed = 0, failed = 0;
 function ok(cond, name, extra = '') {

@@ -1,0 +1,11 @@
+{
+  "name": "ballista-3d",
+  "version": "1.0.0",
+  "description": "Professional 3D projectile & rocket trajectory simulator (WGS84, J2, ISA, Mach-dependent drag, Monte Carlo dispersion)",
+  "type": "module",
+  "scripts": {
+    "test": "node test/physics.test.mjs && node test/meshstats.test.mjs && node test/gl.test.mjs && node test/textures.test.mjs",
+    "serve": "python3 -m http.server 8080"
+  },
+  "license": "MIT"
+}

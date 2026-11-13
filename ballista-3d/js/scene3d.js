@@ -218,6 +218,7 @@ export class View {
   render() {
     const gl = this.gl;
     const { vp } = this.viewProj();
+    const cam = this.camera;
     gl.viewport(0, 0, this.canvas.width, this.canvas.height);
     gl.clearColor(0.012, 0.02, 0.035, 1);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);

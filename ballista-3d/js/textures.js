@@ -1,11 +1,17 @@
-import { LAND_MASK_W, LAND_MASK_H, LAND_MASK_B64 } from './landmask.js';
+import { LAND_MASK_W, LAND_MASK_H, LAND_MASK_RLE_B64 } from './landmask.js';
 
-export async function decodeLandMask() {
-  const bin = atob(LAND_MASK_B64);
-  const buf = Uint8Array.from(bin, (c) => c.charCodeAt(0));
-  const ds = new DecompressionStream('deflate');
-  const out = await new Response(new Blob([buf]).stream().pipeThrough(ds)).arrayBuffer();
-  return new Uint8Array(out);
+// Pure-JS RLE decode (count8, byte) pairs -> packed bit mask. No DecompressionStream needed.
+export function decodeLandMask() {
+  const bin = atob(LAND_MASK_RLE_B64);
+  const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
+  const out = new Uint8Array((LAND_MASK_W * LAND_MASK_H + 7) >> 3);
+  let o = 0;
+  for (let i = 0; i + 1 < bytes.length && o < out.length; i += 2) {
+    const count = bytes[i], b = bytes[i + 1];
+    for (let k = 0; k < count && o < out.length; k++) out[o++] = b;
+  }
+  if (o !== out.length) throw new Error('land mask RLE truncated');
+  return out;
 }
 
 function mulberry32(seed) {

@@ -1,4 +1,5 @@
-import { defaultParams, simulate, summarize, monteCarloAsync } from './physics.js';
+import { defaultParams, simulate, summarize } from './physics.js';
+import { monteCarloAsync } from './mc.js';
 import { EarthScene } from './earth3d.js';
 import { View } from './scene3d.js';
 import { Chart } from './charts.js';

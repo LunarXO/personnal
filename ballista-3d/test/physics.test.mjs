@@ -1,5 +1,5 @@
 import {
-  simulate, summarize, monteCarlo, defaultParams, normalizeParams,
+  simulate, summarize, monteCarlo, monteCarloAsync, defaultParams, normalizeParams,
   atmosphere, cdAt, geodeticToEcef, ecefToGeodetic, enuToEcef, gravityEcef,
   WGS84, greatCircleKm,
 } from '../js/physics.js';
@@ -183,6 +183,20 @@ function approx(a, b, rel, name) {
   approx(p.launcher.muzzleVelocity, v, 1e-12, 'force+barrel -> muzzle velocity sqrt(2FL/m)');
   const res = simulate(normalizeParams({ launch: { alt: 0 }, launcher: { type: 'cannon', mode: 'force', force: 500000, barrelLength: 6, elevation: 45 }, projectile: { mass: 20 }, env: { windSpeed: 0 }, sim: { noAtmosphere: true } }));
   approx(summarize(res).impactSpeed, v, 0.03, 'force-mode sim impact speed ~ sqrt(2FL/m)');
+}
+
+// --- 12. async Monte Carlo (UI path) ---
+{
+  const p = defaultParams();
+  p.launcher.muzzleVelocity = 800;
+  p.launcher.elevation = 45;
+  p.env.windSpeed = 5;
+  const mc = await monteCarloAsync(p, { samples: 24, seed: 42 });
+  ok(mc.impacts.length === 24, 'monteCarloAsync produced 24 impacts');
+  ok(Number.isFinite(mc.cepKm) && mc.cepKm > 0, 'async MC CEP positive and finite', `cep=${mc.cepKm.toFixed(3)}km`);
+  let prog = 0;
+  const mc2 = await monteCarloAsync(p, { samples: 8, seed: 7, onProgress: (i) => { prog = i; } });
+  ok(prog === 8 && mc2.impacts.length === 8, 'async MC onProgress reached final sample');
 }
 
 console.log(`\n${passed} passed, ${failed} failed`);

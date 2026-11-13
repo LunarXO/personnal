@@ -190,7 +190,7 @@ export class View {
       const cam = this.camera;
       const toCam = v3.sub(cam.pos, cam.target);
       let r = v3.len(toCam) * Math.exp(e.deltaY * 0.0011);
-      r = Math.max(6400, Math.min(150000, r));
+      r = Math.max(6372.5, Math.min(150000, r));
       cam.pos = v3.add(cam.target, v3.scale(v3.norm(toCam), r));
     }, { passive: false });
     cv.addEventListener('contextmenu', (e) => e.preventDefault());

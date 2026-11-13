@@ -2,11 +2,11 @@
 
 A browser-based, professional-grade 3D ballistics simulator. Pick a launch point on a
 3D reconstruction of the Earth, choose a launcher (cannon, mortar, rocket) and a
-projectile (preset shape or your own `.glb` / `.stl` model), set the environmental
-factors, and get an accurate prediction with a full 3D visualization: trajectory,
-landing zone (with Monte-Carlo dispersion) and landing force.
+projectile (preset shape or your own `.glb` / `.gltf` / `.stl` model), set the
+environmental factors, and get an accurate prediction with a full 3D visualization:
+trajectory, landing zone (with Monte-Carlo dispersion) and landing force.
 
-![stack](https://img.shields.io/badge/stack-custom%20WebGL%20·%20vanilla%20ESM%20·%20zero%20dependencies-blue)
+![stack](https://img.shields.io/badge/stack-custom%20WebGL%20%C3%B7%20vanilla%20ESM%20%C3%B7%20zero%20dependencies-blue)
 
 ## Run it
 
@@ -19,8 +19,10 @@ python3 -m http.server 8080        # or: npm run serve
 ```
 
 No build step, no runtime CDN, zero dependencies — the renderer is a compact custom
-WebGL engine (`js/gl.js`, `js/scene3d.js`, `js/glmath.js`) and all textures are embedded
-as base64 text (`assets/*.b64`), decoded to blob URLs at startup.
+WebGL engine (`js/gl.js`, `js/scene3d.js`, `js/glmath.js`). Earth day/night/cloud textures
+are generated procedurally at startup (`js/textures.js`) from an embedded compressed
+land/sea mask (`js/landmask.js`, derived from a public-domain Blue Marble image); dropping
+base64 part files (`assets/<name>.b64.N`) overrides them with custom imagery.
 
 ## Physics model (what makes the prediction "accurate")
 
@@ -93,8 +95,9 @@ js/models.js          preset shapes + model upload (auto mass/area)
 js/charts.js          canvas flight-profile charts
 js/ui.js              panels, fields, stages, presets, save/load, results
 js/main.js            state, run pipeline, playback loop, HUD, exports
-assets/               earth day/night + clouds textures, base64 text split into small part files (<name>.b64.N)
-test/                 Node test suites (physics, meshstats, gl/geo/loaders)
+js/textures.js        procedural day/night/cloud textures from the embedded land mask
+js/landmask.js        embedded deflated 360x180 land/sea bitmask (base64)
+test/                 Node test suites (physics, meshstats, gl/geo/loaders, textures)
 ```
 
 ## Accuracy notes & limitations

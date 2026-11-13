@@ -58,32 +58,16 @@ export function makeTexture(gl, source, { srgb = false, clamp = false } = {}) {
   return tex;
 }
 
-// assets are stored as base64 text split into <url>.0, <url>.1, ... parts
-export async function loadB64Text(baseUrl) {
-  let text = '';
-  for (let i = 0; ; i++) {
-    const r = await fetch(`${baseUrl}.${i}`);
-    if (!r.ok) break;
-    text += await r.text();
-  }
-  if (!text) throw new Error('no asset parts found for ' + baseUrl);
-  return text;
-}
-
-export function loadB64Image(url, mime) {
-  return loadB64Text(url).then((t) => {
-    const bin = atob(t);
-    const arr = new Uint8Array(bin.length);
-    for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
-    const blob = new Blob([arr], { type: mime });
-    const objUrl = URL.createObjectURL(blob);
-    const img = new Image();
-    return new Promise((res, rej) => {
-      img.onload = () => res(img);
-      img.onerror = () => rej(new Error('failed to decode image ' + url));
-      img.src = objUrl;
-    });
-  });
+export function makeTextureRaw(gl, w, h, data, { srgb = true } = {}) {
+  const tex = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, tex);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, data);
+  gl.generateMipmap(gl.TEXTURE_2D);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  return tex;
 }
 
 export function canvasTexture(gl, canvas) {

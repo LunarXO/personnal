@@ -100,7 +100,8 @@ export async function loadB64Text(baseUrl) {
   for (let i = 0; ; i++) {
     const r = await fetch(`${baseUrl}.${i}`);
     if (!r.ok) break;
-    text += await r.text();
+    const t = await r.text();
+    if (t.trim()) text += t;
   }
   if (!text) throw new Error('no asset parts found for ' + baseUrl);
   return text;

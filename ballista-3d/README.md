@@ -6,7 +6,7 @@ projectile (preset shape or your own `.glb` / `.gltf` / `.stl` model), set the
 environmental factors, and get an accurate prediction with a full 3D visualization:
 trajectory, landing zone (with Monte-Carlo dispersion) and landing force.
 
-![stack](https://img.shields.io/badge/stack-custom%20WebGL%20%C3%B7%20vanilla%20ESM%20%C3%B7%20zero%20dependencies-blue)
+![stack](https://img.shields.io/badge/stack-custom%20WebGL%20·%20vanilla%20ESM%20·%20zero%20dependencies-blue)
 
 ## Run it
 

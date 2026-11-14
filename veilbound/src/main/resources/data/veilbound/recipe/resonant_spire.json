@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    " G ",
+    "GAG",
+    " V "
+  ],
+  "key": {
+    "G": {
+      "item": "veilbound:glimmer_crystal_block"
+    },
+    "A": {
+      "item": "veilbound:aetherite_ingot"
+    },
+    "V": {
+      "item": "veilbound:voidstone"
+    }
+  },
+  "result": {
+    "id": "veilbound:resonant_spire",
+    "count": 1
+  }
+}

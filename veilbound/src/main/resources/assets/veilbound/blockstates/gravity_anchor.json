@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "veilbound:block/gravity_anchor"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "pattern": [
+    " M ",
+    " M ",
+    " S "
+  ],
+  "key": {
+    "M": {
+      "item": "veilbound:aetherite_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "veilbound:stormcaller_greatsword",
+    "count": 1
+  }
+}

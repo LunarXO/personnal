@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "veilbound:veilstone"
+  },
+  "result": {
+    "id": "veilbound:chiseled_veilstone",
+    "count": 1
+  }
+}

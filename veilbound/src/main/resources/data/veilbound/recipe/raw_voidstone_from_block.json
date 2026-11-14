@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "veilbound:raw_voidstone_block"
+    }
+  ],
+  "result": {
+    "id": "veilbound:raw_voidstone",
+    "count": 9
+  }
+}

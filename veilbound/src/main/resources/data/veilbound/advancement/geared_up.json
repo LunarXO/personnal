@@ -1,0 +1,37 @@
+{
+  "parent": "veilbound:root",
+  "criteria": {
+    "chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "veilbound:aetherite_chestplate"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "veilbound:aetherite_chestplate",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.veilbound.geared_up.title"
+    },
+    "description": {
+      "translate": "advancements.veilbound.geared_up.description"
+    },
+    "frame": "task",
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "chestplate"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

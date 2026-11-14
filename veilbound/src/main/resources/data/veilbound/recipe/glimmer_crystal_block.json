@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "veilbound:glimmer_shard"
+    }
+  },
+  "result": {
+    "id": "veilbound:glimmer_crystal_block",
+    "count": 1
+  }
+}

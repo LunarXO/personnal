@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "veilbound:block/hanging_veil_vines"
+  }
+}

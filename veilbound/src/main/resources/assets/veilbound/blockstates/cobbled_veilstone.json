@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "veilbound:block/cobbled_veilstone"
+    }
+  }
+}

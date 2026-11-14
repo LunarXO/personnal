@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "pattern": [
+    " SA",
+    "S A",
+    " SA"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "A": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "id": "veilbound:veilbow",
+    "count": 1
+  }
+}

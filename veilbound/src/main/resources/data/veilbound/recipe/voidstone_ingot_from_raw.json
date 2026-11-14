@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "veilbound:raw_voidstone"
+  },
+  "result": {
+    "id": "veilbound:voidstone_ingot",
+    "count": 1
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "veilbound:glimmer_shard_ore"
+  },
+  "result": {
+    "id": "veilbound:glimmer_shard",
+    "count": 1
+  },
+  "experience": 0.4,
+  "cookingtime": 100
+}

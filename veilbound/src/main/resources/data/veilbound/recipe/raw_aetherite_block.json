@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "veilbound:raw_aetherite"
+    }
+  },
+  "result": {
+    "id": "veilbound:raw_aetherite_block",
+    "count": 1
+  }
+}

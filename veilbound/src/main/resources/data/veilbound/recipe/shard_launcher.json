@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "pattern": [
+    "GGG",
+    "S S",
+    " S "
+  ],
+  "key": {
+    "G": {
+      "item": "veilbound:glimmer_shard"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "veilbound:shard_launcher",
+    "count": 1
+  }
+}

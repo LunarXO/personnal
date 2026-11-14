@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "veilbound:raw_aetherite_block"
+    }
+  ],
+  "result": {
+    "id": "veilbound:raw_aetherite",
+    "count": 9
+  }
+}

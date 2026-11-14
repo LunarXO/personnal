@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "veilbound:glimmer_crystal_block"
+    }
+  ],
+  "result": {
+    "id": "veilbound:glimmer_shard",
+    "count": 4
+  }
+}

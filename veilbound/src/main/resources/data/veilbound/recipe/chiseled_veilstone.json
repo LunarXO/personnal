@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "veilbound:veilstone_slab"
+    }
+  },
+  "result": {
+    "id": "veilbound:chiseled_veilstone",
+    "count": 1
+  }
+}

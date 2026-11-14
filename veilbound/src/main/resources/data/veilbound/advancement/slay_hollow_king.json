@@ -1,0 +1,35 @@
+{
+  "parent": "veilbound:enter_the_veil",
+  "criteria": {
+    "killed": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "veilbound:hollow_king"
+        }
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "veilbound:void_heart",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.veilbound.slay_hollow_king.title"
+    },
+    "description": {
+      "translate": "advancements.veilbound.slay_hollow_king.description"
+    },
+    "frame": "challenge",
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "killed"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "tools",
+  "pattern": [
+    "MM",
+    "MS",
+    " S"
+  ],
+  "key": {
+    "M": {
+      "item": "veilbound:aetherite_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "veilbound:aetherite_axe",
+    "count": 1
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "criteria": {
+    "veilstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "veilbound:veilstone"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "veilbound:veilstone",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.veilbound.root.title"
+    },
+    "description": {
+      "translate": "advancements.veilbound.root.description"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "frame": "task",
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "veilstone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

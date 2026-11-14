@@ -1,0 +1,24 @@
+{
+  "type": "veilbound:the_depths",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "parameters": {
+            "temperature": 0.0,
+            "humidity": 0.0,
+            "continentalness": 0.0,
+            "erosion": 0.0,
+            "depth": 0.0,
+            "weirdness": 0.0,
+            "offset": 0.0
+          },
+          "biome": "veilbound:abyss_wastes"
+        }
+      ]
+    },
+    "settings": "veilbound:the_depths"
+  }
+}

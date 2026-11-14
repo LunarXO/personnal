@@ -2,6 +2,7 @@ package com.lunarxo.veilbound.registry;
 
 import java.util.function.Function;
 
+import com.lunarxo.veilbound.ModDimensions;
 import com.lunarxo.veilbound.Veilbound;
 import com.lunarxo.veilbound.block.EmberBrazierBlock;
 import com.lunarxo.veilbound.block.GravityAnchorBlock;
@@ -62,8 +63,16 @@ public class ModBlocks {
     public static final DeferredBlock<VeilPortalFrameBlock> VEIL_PORTAL_FRAME = register("veil_portal_frame",
             VeilPortalFrameBlock::new, VEILSTONE_PROPS);
     public static final DeferredBlock<VeilPortalBlock> VEIL_PORTAL = BLOCKS.registerBlock("veil_portal",
-            VeilPortalBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).noCollission()
+            p -> new VeilPortalBlock(p, ModDimensions.THE_VEIL, net.minecraft.world.level.Level.OVERWORLD), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).noCollission()
                     .strength(-1.0F, 3600000.0F).noLootTable().lightLevel(s -> 15).sound(SoundType.GLASS));
+
+    public static final DeferredBlock<Block> ABYSS_STONE = register("abyss_stone", Block::new,
+            BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(2.0F, 8.0F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops());
+    public static final DeferredBlock<VeilPortalFrameBlock> ABYSS_PORTAL_FRAME = register("abyss_portal_frame",
+            VeilPortalFrameBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.5F, 12.0F).sound(SoundType.DEEPSLATE).requiresCorrectToolForDrops());
+    public static final DeferredBlock<VeilPortalBlock> ABYSS_PORTAL = BLOCKS.registerBlock("abyss_portal",
+            p -> new VeilPortalBlock(p, ModDimensions.THE_DEPTHS, ModDimensions.THE_VEIL), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).noCollission()
+                    .strength(-1.0F, 3600000.0F).noLootTable().lightLevel(s -> 12).sound(SoundType.GLASS));
 
     public static final DeferredBlock<GravityAnchorBlock> GRAVITY_ANCHOR = register("gravity_anchor",
             GravityAnchorBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).strength(3.5F, 9.0F)

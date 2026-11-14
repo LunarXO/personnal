@@ -6,6 +6,7 @@ import net.minecraft.world.level.Level;
 
 public final class ModDimensions {
     public static final ResourceKey<Level> THE_VEIL = ResourceKey.create(Registries.DIMENSION, Veilbound.id("the_veil"));
+    public static final ResourceKey<Level> THE_DEPTHS = ResourceKey.create(Registries.DIMENSION, Veilbound.id("the_depths"));
 
     private ModDimensions() {
     }

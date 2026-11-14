@@ -47,5 +47,19 @@
         "name": "veilbound:boss_roar"
       }
     ]
+  },
+  "storm_cast": {
+    "sounds": [
+      {
+        "name": "veilbound:storm_cast"
+      }
+    ]
+  },
+  "ember_cast": {
+    "sounds": [
+      {
+        "name": "veilbound:ember_cast"
+      }
+    ]
   }
 }

@@ -21,11 +21,11 @@ public final class VeilTeleporter {
     private VeilTeleporter() {
     }
 
-    public static void teleport(Entity entity) {
+    public static void teleport(Entity entity, ResourceKey<Level> dimension, ResourceKey<Level> returnDimension) {
         if (!(entity.level() instanceof ServerLevel level)) {
             return;
         }
-        ResourceKey<Level> targetKey = level.dimension().equals(ModDimensions.THE_VEIL) ? Level.OVERWORLD : ModDimensions.THE_VEIL;
+        ResourceKey<Level> targetKey = level.dimension().equals(dimension) ? returnDimension : dimension;
         ServerLevel target = level.getServer().getLevel(targetKey);
         if (target == null || target == level) {
             return;

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "pattern": [
+    " E ",
+    "EVE",
+    " S "
+  ],
+  "key": {
+    "E": {
+      "item": "veilbound:ember_core"
+    },
+    "V": {
+      "item": "veilbound:voidstone"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "veilbound:ember_staff",
+    "count": 1
+  }
+}

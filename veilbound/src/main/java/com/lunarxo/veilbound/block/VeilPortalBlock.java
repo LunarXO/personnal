@@ -14,10 +14,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.resources.ResourceKey;
 
 public class VeilPortalBlock extends Block {
-    public VeilPortalBlock(BlockBehaviour.Properties properties) {
+    private final ResourceKey<Level> dimension;
+    private final ResourceKey<Level> returnDimension;
+
+    public VeilPortalBlock(BlockBehaviour.Properties properties, ResourceKey<Level> dimension, ResourceKey<Level> returnDimension) {
         super(properties);
+        this.dimension = dimension;
+        this.returnDimension = returnDimension;
     }
 
     @Override
@@ -30,7 +36,7 @@ public class VeilPortalBlock extends Block {
             return;
         }
         entity.getPersistentData().putLong("veilbound:portal_cd", level.getGameTime());
-        VeilTeleporter.teleport(entity);
+        VeilTeleporter.teleport(entity, this.dimension, this.returnDimension);
     }
 
     @Override

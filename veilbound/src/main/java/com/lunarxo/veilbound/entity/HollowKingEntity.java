@@ -1,8 +1,11 @@
 package com.lunarxo.veilbound.entity;
 
-import com.lunarxo.veilbound.ModDimensions;
+import com.lunarxo.veilbound.ModBiomes;
 import com.lunarxo.veilbound.Veilbound;
 import com.lunarxo.veilbound.VeilboundConfig;
+import com.lunarxo.veilbound.entity.ai.BossTeleportGoal;
+import com.lunarxo.veilbound.entity.ai.VoidBeamGoal;
+import com.lunarxo.veilbound.entity.ai.VoidSlamGoal;
 import com.lunarxo.veilbound.entity.projectile.GloomOrbEntity;
 import com.lunarxo.veilbound.registry.ModEntities;
 import com.lunarxo.veilbound.registry.ModSoundEvents;
@@ -54,7 +57,7 @@ public class HollowKingEntity extends Monster implements RangedAttackMob {
 
     public static boolean checkVeilSpawn(EntityType<? extends HollowKingEntity> type, ServerLevelAccessor level,
             MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return level.getLevel().dimension() == ModDimensions.THE_VEIL
+        return level.getBiome(pos).is(ModBiomes.IS_VEIL)
                 && Monster.checkMonsterSpawnRules(type, level, spawnType, pos, random);
     }
 
@@ -69,6 +72,9 @@ public class HollowKingEntity extends Monster implements RangedAttackMob {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new VoidSlamGoal(this));
+        this.goalSelector.addGoal(1, new VoidBeamGoal(this));
+        this.goalSelector.addGoal(1, new BossTeleportGoal(this));
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, getPhase() >= 3 ? 1.4D : 1.0D, false));
         this.goalSelector.addGoal(3, new RangedAttackGoal(this, 1.0D, 60, 20.0F));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 0.8D));

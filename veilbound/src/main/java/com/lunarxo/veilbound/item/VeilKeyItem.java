@@ -14,10 +14,17 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Block;
+import java.util.function.Supplier;
 
 public class VeilKeyItem extends Item {
-    public VeilKeyItem(Properties properties) {
+    private final Supplier<Block> frame;
+    private final Supplier<Block> portal;
+
+    public VeilKeyItem(Properties properties, Supplier<Block> frame, Supplier<Block> portal) {
         super(properties.stacksTo(1));
+        this.frame = frame;
+        this.portal = portal;
     }
 
     @Override
@@ -25,11 +32,11 @@ public class VeilKeyItem extends Item {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
         BlockState state = level.getBlockState(pos);
-        if (!state.is(ModBlocks.VEIL_PORTAL_FRAME.get())) {
+        if (!state.is(this.frame.get())) {
             return InteractionResult.PASS;
         }
         if (!level.isClientSide) {
-            level.setBlockAndUpdate(pos, ModBlocks.VEIL_PORTAL.get().defaultBlockState());
+            level.setBlockAndUpdate(pos, this.portal.get().defaultBlockState());
             level.playSound(null, pos, ModSoundEvents.PORTAL_OPEN.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             if (level instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles((ParticleOptions) ModParticles.SHARD_SPARKLE.get(),

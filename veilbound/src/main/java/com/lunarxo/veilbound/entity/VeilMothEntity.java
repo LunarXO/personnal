@@ -1,6 +1,6 @@
 package com.lunarxo.veilbound.entity;
 
-import com.lunarxo.veilbound.ModDimensions;
+import com.lunarxo.veilbound.ModBiomes;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -22,7 +22,7 @@ public class VeilMothEntity extends Bat {
 
     public static boolean checkVeilSpawn(EntityType<? extends VeilMothEntity> type, ServerLevelAccessor level,
             MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return level.getLevel().dimension() == ModDimensions.THE_VEIL
+        return level.getBiome(pos).is(ModBiomes.IS_VEIL)
                 && level.getLevel().getMaxLocalRawBrightness(pos) < 8;
     }
 }

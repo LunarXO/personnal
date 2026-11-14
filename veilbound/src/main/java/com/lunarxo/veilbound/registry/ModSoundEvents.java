@@ -17,6 +17,8 @@ public class ModSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> GLOOM_CAST = register("gloom_cast");
     public static final DeferredHolder<SoundEvent, SoundEvent> WISP_SHOOT = register("wisp_shoot");
     public static final DeferredHolder<SoundEvent, SoundEvent> BOSS_ROAR = register("boss_roar");
+    public static final DeferredHolder<SoundEvent, SoundEvent> STORM_CAST = register("storm_cast");
+    public static final DeferredHolder<SoundEvent, SoundEvent> EMBER_CAST = register("ember_cast");
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(Veilbound.id(name)));

@@ -11,7 +11,9 @@ import com.lunarxo.veilbound.item.trinket.VeilCloakItem;
 import com.lunarxo.veilbound.item.weapon.AetherfangDaggerItem;
 import com.lunarxo.veilbound.item.weapon.EmberbrandSwordItem;
 import com.lunarxo.veilbound.item.weapon.GloomWandItem;
+import com.lunarxo.veilbound.item.weapon.EmberStaffItem;
 import com.lunarxo.veilbound.item.weapon.ShardLauncherItem;
+import com.lunarxo.veilbound.item.weapon.StormScepterItem;
 import com.lunarxo.veilbound.item.weapon.StormcallerGreatswordItem;
 import com.lunarxo.veilbound.item.weapon.VoidreaverScytheItem;
 
@@ -101,9 +103,14 @@ public class ModItems {
     public static final DeferredItem<ShardLauncherItem> SHARD_LAUNCHER = ITEMS.registerItem("shard_launcher",
             ShardLauncherItem::new);
     public static final DeferredItem<GloomWandItem> GLOOM_WAND = ITEMS.registerItem("gloom_wand", GloomWandItem::new);
+    public static final DeferredItem<StormScepterItem> STORM_SCEPTER = ITEMS.registerItem("storm_scepter", StormScepterItem::new);
+    public static final DeferredItem<EmberStaffItem> EMBER_STAFF = ITEMS.registerItem("ember_staff", EmberStaffItem::new);
 
     // Trinkets and utility
-    public static final DeferredItem<VeilKeyItem> VEIL_KEY = ITEMS.registerItem("veil_key", VeilKeyItem::new);
+    public static final DeferredItem<VeilKeyItem> VEIL_KEY = ITEMS.registerItem("veil_key",
+            p -> new VeilKeyItem(p, ModBlocks.VEIL_PORTAL_FRAME::get, ModBlocks.VEIL_PORTAL::get));
+    public static final DeferredItem<VeilKeyItem> ABYSS_KEY = ITEMS.registerItem("abyss_key",
+            p -> new VeilKeyItem(p, ModBlocks.ABYSS_PORTAL_FRAME::get, ModBlocks.ABYSS_PORTAL::get));
     public static final DeferredItem<AmuletOfSlowFallItem> AMULET_OF_SLOW_FALL = ITEMS.registerItem("amulet_of_slow_fall",
             AmuletOfSlowFallItem::new);
     public static final DeferredItem<GravityRingItem> GRAVITY_RING = ITEMS.registerItem("gravity_ring", GravityRingItem::new);
@@ -152,6 +159,8 @@ public class ModItems {
     public static final DeferredItem<BlockItem> RAW_AETHERITE_BLOCK_ITEM = blockItem("raw_aetherite_block", ModBlocks.RAW_AETHERITE_BLOCK);
     public static final DeferredItem<BlockItem> RAW_VOIDSTONE_BLOCK_ITEM = blockItem("raw_voidstone_block", ModBlocks.RAW_VOIDSTONE_BLOCK);
     public static final DeferredItem<BlockItem> VEIL_PORTAL_FRAME_ITEM = blockItem("veil_portal_frame", ModBlocks.VEIL_PORTAL_FRAME);
+    public static final DeferredItem<BlockItem> ABYSS_STONE_ITEM = blockItem("abyss_stone", ModBlocks.ABYSS_STONE);
+    public static final DeferredItem<BlockItem> ABYSS_PORTAL_FRAME_ITEM = blockItem("abyss_portal_frame", ModBlocks.ABYSS_PORTAL_FRAME);
     public static final DeferredItem<BlockItem> GRAVITY_ANCHOR_ITEM = blockItem("gravity_anchor", ModBlocks.GRAVITY_ANCHOR);
     public static final DeferredItem<BlockItem> RESONANT_SPIRE_ITEM = blockItem("resonant_spire", ModBlocks.RESONANT_SPIRE);
     public static final DeferredItem<BlockItem> EMBER_BRAZIER_ITEM = blockItem("ember_brazier", ModBlocks.EMBER_BRAZIER);

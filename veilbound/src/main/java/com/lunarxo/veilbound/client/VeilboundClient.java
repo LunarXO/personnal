@@ -49,6 +49,8 @@ public class VeilboundClient {
         event.registerEntityRenderer(ModEntities.EMBER_ORB.get(), ctx -> new ThrownItemRenderer<>(ctx, 1.0F, true));
         event.registerEntityRenderer(ModEntities.SHARD_BOLT.get(), ctx -> new ThrownItemRenderer<>(ctx, 1.0F, true));
         event.registerEntityRenderer(ModEntities.GLOOM_ORB.get(), ctx -> new ThrownItemRenderer<>(ctx, 1.0F, true));
+        event.registerEntityRenderer(ModEntities.STORM_BOLT.get(), ctx -> new ThrownItemRenderer<>(ctx, 1.0F, true));
+        event.registerEntityRenderer(ModEntities.FIREBALL.get(), ctx -> new ThrownItemRenderer<>(ctx, 1.0F, true));
         event.registerEntityRenderer(ModEntities.VEIL_ARROW.get(), VeilArrowRenderer::new);
     }
 

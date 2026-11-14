@@ -105,6 +105,7 @@ SIMPLE_BLOCKS = {
     "raw_voidstone_block": (0xB04FFF, "metal"), "veil_portal_frame": (0x2A1A4A, "frame"),
     "veil_portal": (0xB04FFF, "portal"), "gravity_anchor": (0x60E8FF, "metal"),
     "resonant_spire": (0xFF8FE0, "crystal"), "ember_brazier": (0xFF7722, "metal"),
+    "abyss_stone": (0x1A0B12, "stone"), "abyss_portal_frame": (0x2A0A12, "frame"), "abyss_portal": (0xFF3300, "portal"),
 }
 COLUMN_BLOCKS = {"veil_turf": ((0x5D4C31, "top"), (0x4A3A6B, "side"))}
 PLANT_BLOCKS = ["veil_grass", "veil_bloom", "hanging_veil_vines", "glowing_veil_fungus"]
@@ -126,7 +127,8 @@ ITEMS = {
     "voidsteel_shovel": ((0x8A5A2B, 0xB04FFF), "tool"), "voidsteel_hoe": ((0x8A5A2B, 0xB04FFF), "tool"),
     "veilbow": ((0x4A3A6B, 0xB06AFF), "bow"), "veil_arrow": ((0xB06AFF, 0xFF8FE0), "arrow"),
     "shard_launcher": ((0x8A5A2B, 0xFF8FE0), "tool"), "gloom_wand": ((0x8A5A2B, 0x9B8BD0), "tool"),
-    "veil_key": (0xFFD700, "key"), "amulet_of_slow_fall": (0x60E8FF, "amulet"),
+    "storm_scepter": ((0x8A5A2B, 0x60E8FF), "tool"), "ember_staff": ((0x8A5A2B, 0xFF7722), "tool"),
+    "veil_key": (0xFFD700, "key"), "abyss_key": (0xFF3300, "key"), "amulet_of_slow_fall": (0x60E8FF, "amulet"),
     "gravity_ring": (0xB04FFF, "ring"), "veil_cloak": (0x2A1A4A, "cloak"),
     "ember_helmet": (0xFF7722, "armor"), "ember_chestplate": (0xFF7722, "armor"), "ember_leggings": (0xFF7722, "armor"), "ember_boots": (0xFF7722, "armor"),
     "aetherite_helmet": (0x60E8FF, "armor"), "aetherite_chestplate": (0x60E8FF, "armor"), "aetherite_leggings": (0x60E8FF, "armor"), "aetherite_boots": (0x60E8FF, "armor"),
@@ -134,7 +136,7 @@ ITEMS = {
 }
 HANDHELD_ITEMS = {n for n, v in ITEMS.items() if v[1] == "tool"}
 SPAWN_EGGS = ["glimmerfox", "shardling", "veil_moth", "hollow_husk", "veil_reaver", "ember_wisp", "crystal_golem", "hollow_king"]
-BLOCK_ITEMS = list(SIMPLE_BLOCKS) + list(COLUMN_BLOCKS) + list(STAIR_SLAB_WALL) + PLANT_BLOCKS + ["veil_portal_frame"]
+BLOCK_ITEMS = [b for b in SIMPLE_BLOCKS if b not in ("veil_portal", "abyss_portal")] + list(COLUMN_BLOCKS) + list(STAIR_SLAB_WALL) + PLANT_BLOCKS + ["veil_portal_frame", "abyss_portal_frame"]
 # veil_portal has no item
 
 ENTITIES = {
@@ -145,7 +147,7 @@ ENTITIES = {
 ARMOR_MATS = ["ember", "aetherite", "voidsteel"]
 ARMOR_COLORS = {"ember": 0xFF7722, "aetherite": 0x60E8FF, "voidsteel": 0xB04FFF}
 
-SOUNDS = ["portal_open", "portal_travel", "portal_ambient", "shard_shoot", "gloom_cast", "wisp_shoot", "boss_roar"]
+SOUNDS = ["portal_open", "portal_travel", "portal_ambient", "shard_shoot", "gloom_cast", "wisp_shoot", "boss_roar", "storm_cast", "ember_cast"]
 
 
 def jwrite(path, obj):
@@ -391,8 +393,8 @@ def block_loot_ore(ore, drop, count=None):
 def gen_block_loot():
     out = os.path.join(DATA, "veilbound", "loot_table", "blocks")
     for name in SIMPLE_BLOCKS:
-        if name == "veil_portal":
-            continue  # portal block has no item and noLootTable
+        if name in ("veil_portal", "abyss_portal"):
+            continue  # portal blocks have no item and noLootTable
         if name in ("aetherite_ore", "deepslate_aetherite_ore"):
             jwrite(f"{out}/{name}.json", block_loot_ore(name, "raw_aetherite"))
         elif name == "voidstone_ore":
@@ -541,6 +543,9 @@ def gen_recipes():
     jwrite(f"{out}/veil_arrow.json", shaped("veil_arrow", 4, ["G", "S", "F"], {"G": G, "S": ST, "F": "minecraft:feather"}, "combat"))
     jwrite(f"{out}/shard_launcher.json", shaped("shard_launcher", 1, ["GGG", "S S", " S "], {"G": G, "S": ST}, "combat"))
     jwrite(f"{out}/gloom_wand.json", shaped("gloom_wand", 1, [" V", "SV", "S "], {"V": VS, "S": ST}, "combat"))
+    jwrite(f"{out}/storm_scepter.json", shaped("storm_scepter", 1, [" A ", "AGA", " S "], {"A": A, "G": G, "S": ST}, "combat"))
+    jwrite(f"{out}/ember_staff.json", shaped("ember_staff", 1, [" E ", "EVE", " S "], {"E": E, "V": V, "S": ST}, "combat"))
+    jwrite(f"{out}/abyss_key.json", shaped("abyss_key", 1, [" V ", "VEV", " V "], {"V": VS, "E": E}, "misc"))
     # armor
     for tier, mat in mats.items():
         jwrite(f"{out}/{tier}_helmet.json", shaped(f"{tier}_helmet", 1, ["MMM", "M M"], {"M": mat}, "combat"))
@@ -570,9 +575,11 @@ def gen_tags():
     jwrite(f"{DATA}/minecraft/tags/block/needs_iron_tool.json", {"replace": False, "values": [
         "veilbound:voidstone_ore", "veilbound:voidstone", "veilbound:voidstone_bricks"]})
     jwrite(f"{DATA}/veilbound/tags/block/veilstone_ore_replaceables.json", {"replace": False, "values": [
-        "veilbound:veilstone", "veilbound:cobbled_veilstone", "veilbound:veil_turf"]})
+        "veilbound:veilstone", "veilbound:cobbled_veilstone", "veilbound:veil_turf", "veilbound:abyss_stone"]})
     jwrite(f"{DATA}/veilbound/tags/worldgen/biome/is_veil.json", {"replace": False, "values": [
-        "veilbound:veil_expanse", "veilbound:crystal_hollows", "veilbound:ember_mires"]})
+        "veilbound:veil_expanse", "veilbound:crystal_hollows", "veilbound:ember_mires", "veilbound:abyss_wastes"]})
+    jwrite(f"{DATA}/veilbound/tags/worldgen/biome/has_structure/veil_ruin.json", {"replace": False, "values": [
+        "veilbound:veil_expanse", "veilbound:crystal_hollows", "veilbound:ember_mires", "veilbound:abyss_wastes"]})
 
 
 # ---------------------------------------------------------------- advancements
@@ -714,6 +721,209 @@ def gen_worldgen():
     placed("crystal_cluster", 6, 0, 160)
 
 
+
+# ---------------------------------------------------------------- NBT + structures
+
+TAG_BYTE, TAG_INT, TAG_STRING, TAG_LIST, TAG_COMPOUND, TAG_INT_ARRAY = 1, 3, 8, 9, 10, 11
+
+
+def _nbt_payload(f, t, v):
+    if t == TAG_BYTE:
+        f.write(struct.pack(">b", v))
+    elif t == TAG_INT:
+        f.write(struct.pack(">i", v))
+    elif t == TAG_STRING:
+        b = v.encode()
+        f.write(struct.pack(">H", len(b)) + b)
+    elif t == TAG_INT_ARRAY:
+        f.write(struct.pack(">i", len(v)))
+        for x in v:
+            f.write(struct.pack(">i", x))
+    elif t == TAG_LIST:
+        et, items = v
+        f.write(struct.pack(">b", et))
+        f.write(struct.pack(">i", len(items)))
+        for it in items:
+            _nbt_payload(f, et, it)
+    elif t == TAG_COMPOUND:
+        for name, (tt, vv) in v.items():
+            f.write(struct.pack(">b", tt))
+            nb = name.encode()
+            f.write(struct.pack(">H", len(nb)) + nb)
+            _nbt_payload(f, tt, vv)
+        f.write(b"\x00")
+
+
+def write_nbt(path, root):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    import gzip
+    with gzip.open(path, "wb", compresslevel=9) as f:
+        f.write(struct.pack(">b", TAG_COMPOUND))
+        f.write(struct.pack(">H", 0))
+        _nbt_payload(f, TAG_COMPOUND, root)
+
+
+def structure_nbt(path, size, palette, blocks):
+    """palette: list of state names; blocks: list of (pos, state_index, nbt_or_None)."""
+    pal = [{"Name": (TAG_STRING, name)} for name in palette]
+    blist = []
+    for pos, state, nbt in blocks:
+        entry = {"pos": (TAG_LIST, (TAG_INT, list(pos))), "state": (TAG_INT, state)}
+        if nbt:
+            entry["nbt"] = (TAG_COMPOUND, nbt)
+        blist.append(entry)
+    root = {
+        "DataVersion": (TAG_INT, 3955),
+        "size": (TAG_LIST, (TAG_INT, list(size))),
+        "palette": (TAG_LIST, (TAG_COMPOUND, pal)),
+        "blocks": (TAG_LIST, (TAG_COMPOUND, blist)),
+        "entities": (TAG_LIST, (TAG_COMPOUND, [])),
+    }
+    write_nbt(path, root)
+
+
+def gen_structures():
+    out = os.path.join(DATA, "veilbound")
+    # empty template for game tests
+    structure_nbt(f"{out}/structure/empty3.nbt", (3, 3, 3), ["minecraft:air"], [])
+    # veil ruin: 13x10x13, floor + corner pillars + partial walls + loot chest + decorations
+    palette = [
+        "veilbound:veilstone_bricks", "veilbound:cobbled_veilstone", "veilbound:chiseled_veilstone",
+        "veilbound:veilstone_wall", "minecraft:chest", "veilbound:glimmer_crystal_block",
+        "veilbound:ember_brazier", "veilbound:voidstone_bricks",
+    ]
+    idx = {name: i for i, name in enumerate(palette)}
+    rng = random.Random("veil_ruin")
+    blocks = []
+    W = 13
+    for x in range(W):
+        for z in range(W):
+            name = "veilbound:cobbled_veilstone" if rng.random() < 0.2 else "veilbound:veilstone_bricks"
+            blocks.append(((x, 0, z), idx[name], None))
+    for cx, cz in ((1, 1), (W - 2, 1), (1, W - 2), (W - 2, W - 2)):
+        for y in range(1, 7):
+            blocks.append(((cx, y, cz), idx["veilbound:chiseled_veilstone"], None))
+    for y in range(1, 4):
+        for x in range(1, W - 1):
+            if (x % 3 != 0 or y > 1):
+                blocks.append(((x, y, 0), idx["veilbound:veilstone_wall"], None))
+                blocks.append(((x, y, W - 1), idx["veilbound:veilstone_wall"], None))
+        for z in range(1, W - 1):
+            if (z % 4 != 1 or y > 1):
+                blocks.append(((0, y, z), idx["veilbound:veilstone_wall"], None))
+                blocks.append(((W - 1, y, z), idx["veilbound:veilstone_wall"], None))
+    for dx, dz in ((5, 5), (7, 5), (5, 7), (7, 7)):
+        blocks.append(((dx, 1, dz), idx["veilbound:glimmer_crystal_block"], None))
+    blocks.append(((6, 1, 3), idx["veilbound:ember_brazier"], None))
+    blocks.append(((6, 1, 9), idx["veilbound:ember_brazier"], None))
+    for x in (4, 8):
+        blocks.append(((x, 1, 6), idx["veilbound:voidstone_bricks"], None))
+    chest_nbt = {"id": (TAG_STRING, "minecraft:chest"), "LootTable": (TAG_STRING, "veilbound:chests/veil_ruin")}
+    blocks.append(((6, 1, 6), idx["minecraft:chest"], chest_nbt))
+    structure_nbt(f"{out}/structure/veil_ruin.nbt", (W, 10, W), palette, blocks)
+    # worldgen structure (jigsaw, single piece)
+    wg = os.path.join(out, "worldgen")
+    jwrite(f"{wg}/structure/veil_ruin.json", {
+        "type": "minecraft:jigsaw",
+        "biomes": "#veilbound:has_structure/veil_ruin",
+        "step": "surface_structures",
+        "spawn_overrides": {},
+        "start_pool": "veilbound:veil_ruin_pool",
+        "size": 1,
+        "start_height": {"absolute": 0},
+        "max_distance_from_center": 32,
+        "project_start_to_heightmap": "WORLD_SURFACE_WG",
+        "use_expansion_hack": False,
+        "terrain_adaptation": "beard_thin",
+    })
+    jwrite(f"{wg}/template_pool/veil_ruin_pool.json", {
+        "name": "veilbound:veil_ruin_pool",
+        "fallback": "minecraft:empty",
+        "elements": [{
+            "weight": 1,
+            "element": {
+                "element_type": "minecraft:legacy_single_pool_element",
+                "location": "veilbound:veil_ruin",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+            },
+        }],
+    })
+    jwrite(f"{wg}/structure_set/veil_ruins.json", {
+        "structures": [{"structure": "veilbound:veil_ruin", "weight": 1}],
+        "placement": {"type": "minecraft:random_spread", "salt": 90210, "spacing": 28, "separation": 10,
+                      "spread_type": "linear"},
+    })
+    # chest loot
+    jwrite(f"{out}/loot_table/chests/veil_ruin.json", {
+        "type": "minecraft:chest",
+        "pools": [
+            {"bonus_rolls": 0.0, "rolls": 1.0, "entries": [{"type": "minecraft:item", "name": "veilbound:glimmer_shard",
+                "functions": [{"function": "minecraft:set_count", "count": {"type": "minecraft:uniform", "min": 2.0, "max": 5.0}, "add": False}]}]},
+            {"bonus_rolls": 0.0, "rolls": 1.0, "conditions": [{"condition": "minecraft:random_chance", "chance": 0.6}],
+             "entries": [{"type": "minecraft:item", "name": "veilbound:aetherite_ingot"}]},
+            {"bonus_rolls": 0.0, "rolls": 1.0, "conditions": [{"condition": "minecraft:random_chance", "chance": 0.4}],
+             "entries": [{"type": "minecraft:item", "name": "veilbound:veil_essence",
+                "functions": [{"function": "minecraft:set_count", "count": {"type": "minecraft:uniform", "min": 1.0, "max": 3.0}, "add": False}]}]},
+            {"bonus_rolls": 0.0, "rolls": 1.0, "conditions": [{"condition": "minecraft:random_chance", "chance": 0.25}],
+             "entries": [{"type": "minecraft:item", "name": "veilbound:ember_core"}]},
+        ],
+    })
+
+
+def gen_depths_dimension():
+    jwrite(f"{DATA}/veilbound/dimension_type/the_depths.json", {
+        "ambient_light": 0.0, "bed_works": False, "coordinate_scale": 1.0, "effects": "minecraft:the_nether",
+        "fixed_time": 18000, "has_ceiling": True, "has_raids": True, "has_skylight": False,
+        "height": 384, "infiniburn": "#minecraft:infiniburn_nether", "logical_height": 384,
+        "min_y": -64, "monster_spawn_block_light_limit": 0,
+        "monster_spawn_light_level": {"type": "minecraft:uniform", "min_inclusive": 0, "max_inclusive": 7},
+        "natural": False, "piglin_safe": False, "respawn_anchor_works": False, "ultrawarm": False})
+    jwrite(f"{DATA}/veilbound/dimension/the_depths.json", {
+        "type": "veilbound:the_depths",
+        "generator": {
+            "type": "minecraft:noise",
+            "biome_source": {"type": "minecraft:multi_noise", "biomes": [
+                {"parameters": {"temperature": 0.0, "humidity": 0.0, "continentalness": 0.0, "erosion": 0.0, "depth": 0.0, "weirdness": 0.0, "offset": 0.0}, "biome": "veilbound:abyss_wastes"}]},
+            "settings": "veilbound:the_depths"}})
+    ref = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates", "floating_islands.json")
+    ns = json.load(open(ref))
+    ns["default_block"] = {"Name": "veilbound:abyss_stone"}
+    ns["default_fluid"] = {"Name": "minecraft:lava", "Properties": {"level": "0"}}
+    ns["noise"] = {"min_y": -64, "height": 384, "size_horizontal": 2, "size_vertical": 1}
+    ns["sea_level"] = -64
+    ns["surface_rule"] = {"type": "minecraft:block", "result_state": {"Name": "veilbound:abyss_stone"}}
+    grads = []
+    def walk(o):
+        if isinstance(o, dict):
+            if o.get("type") == "minecraft:y_clamped_gradient":
+                grads.append(o)
+            for v in o.values():
+                walk(v)
+        elif isinstance(o, list):
+            for v in o:
+                walk(v)
+    walk(ns["noise_router"])
+    if len(grads) >= 2:
+        grads[0]["from_y"], grads[0]["to_y"] = -32, 40
+        grads[1]["from_y"], grads[1]["to_y"] = 80, 176
+    jwrite(f"{DATA}/veilbound/worldgen/noise_settings/the_depths.json", ns)
+    wg = os.path.join(DATA, "veilbound", "worldgen")
+    def spawn(t, w, mn, mx):
+        return {"type": f"veilbound:{t}", "weight": w, "minCount": mn, "maxCount": mx}
+    jwrite(f"{wg}/biome/abyss_wastes.json", {
+        "carvers": {}, "downfall": 0.0, "has_precipitation": False, "temperature": 0.8,
+        "effects": {"fog_color": 0x1A0505, "sky_color": 0x0D0202, "water_color": 0xFF4400, "water_fog_color": 0x992200,
+                    "mood_sound": {"block_search_extent": 8, "offset": 2.0, "sound": "minecraft:ambient.nether_wastes.mood", "tick_delay": 6000}},
+        "spawn_costs": {},
+        "spawners": {"ambient": [spawn("veil_moth", 6, 1, 2)], "axolotls": [], "creature": [spawn("shardling", 6, 1, 2)],
+                     "misc": [], "monster": [spawn("hollow_husk", 35, 1, 3), spawn("veil_reaver", 25, 1, 2),
+                                              spawn("ember_wisp", 20, 1, 3), spawn("crystal_golem", 5, 1, 1)],
+                     "underground_water_creature": [], "water_ambient": [], "water_creature": []},
+        "features": [[], [], [], [], [], [], ["veilbound:ore_voidstone", "veilbound:ore_glimmer_shard"], ["veilbound:crystal_cluster"], [], [], []],
+    })
+
+
 def main():
     import shutil
     for d in (ASSETS, os.path.join(DATA, "veilbound"), os.path.join(DATA, "minecraft", "tags", "block")):
@@ -727,6 +937,8 @@ def main():
     gen_tags()
     gen_advancements()
     gen_worldgen()
+    gen_structures()
+    gen_depths_dimension()
     print("resources generated under", ROOT)
 
 

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "pattern": [
+    " A ",
+    "AGA",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "veilbound:aetherite_ingot"
+    },
+    "G": {
+      "item": "veilbound:glimmer_shard"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "veilbound:storm_scepter",
+    "count": 1
+  }
+}

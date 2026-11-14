@@ -1,6 +1,6 @@
 package com.lunarxo.veilbound.entity;
 
-import com.lunarxo.veilbound.ModDimensions;
+import com.lunarxo.veilbound.ModBiomes;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -35,7 +35,7 @@ public class HollowHuskEntity extends Monster {
 
     public static boolean checkVeilSpawn(EntityType<? extends HollowHuskEntity> type, ServerLevelAccessor level,
             MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return level.getLevel().dimension() == ModDimensions.THE_VEIL
+        return level.getBiome(pos).is(ModBiomes.IS_VEIL)
                 && Monster.checkMonsterSpawnRules(type, level, spawnType, pos, random);
     }
 

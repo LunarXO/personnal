@@ -1,6 +1,6 @@
 package com.lunarxo.veilbound.entity;
 
-import com.lunarxo.veilbound.ModDimensions;
+import com.lunarxo.veilbound.ModBiomes;
 import com.lunarxo.veilbound.registry.ModEntities;
 import com.lunarxo.veilbound.registry.ModItems;
 
@@ -39,7 +39,7 @@ public class GlimmerfoxEntity extends Animal {
 
     public static boolean checkVeilSpawn(EntityType<? extends GlimmerfoxEntity> type, ServerLevelAccessor level,
             MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return level.getLevel().dimension() == ModDimensions.THE_VEIL
+        return level.getBiome(pos).is(ModBiomes.IS_VEIL)
                 && Animal.checkAnimalSpawnRules(type, level, spawnType, pos, random);
     }
 

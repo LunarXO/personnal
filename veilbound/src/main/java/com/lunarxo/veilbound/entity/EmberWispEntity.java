@@ -1,6 +1,6 @@
 package com.lunarxo.veilbound.entity;
 
-import com.lunarxo.veilbound.ModDimensions;
+import com.lunarxo.veilbound.ModBiomes;
 import com.lunarxo.veilbound.entity.projectile.EmberOrbEntity;
 import com.lunarxo.veilbound.registry.ModEntities;
 import com.lunarxo.veilbound.registry.ModSoundEvents;
@@ -42,7 +42,7 @@ public class EmberWispEntity extends Monster implements RangedAttackMob {
 
     public static boolean checkVeilSpawn(EntityType<? extends EmberWispEntity> type, ServerLevelAccessor level,
             MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return level.getLevel().dimension() == ModDimensions.THE_VEIL
+        return level.getBiome(pos).is(ModBiomes.IS_VEIL)
                 && Monster.checkMonsterSpawnRules(type, level, spawnType, pos, random);
     }
 

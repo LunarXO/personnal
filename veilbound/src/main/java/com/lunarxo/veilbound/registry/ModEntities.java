@@ -11,7 +11,9 @@ import com.lunarxo.veilbound.entity.VeilMothEntity;
 import com.lunarxo.veilbound.entity.VeilReaverEntity;
 import com.lunarxo.veilbound.entity.projectile.EmberOrbEntity;
 import com.lunarxo.veilbound.entity.projectile.GloomOrbEntity;
+import com.lunarxo.veilbound.entity.projectile.FireballEntity;
 import com.lunarxo.veilbound.entity.projectile.ShardBoltEntity;
+import com.lunarxo.veilbound.entity.projectile.StormBoltEntity;
 import com.lunarxo.veilbound.entity.projectile.VeilArrowEntity;
 
 import net.minecraft.core.registries.Registries;
@@ -50,6 +52,12 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<GloomOrbEntity>> GLOOM_ORB = ENTITIES.register("gloom_orb",
             () -> EntityType.Builder.<GloomOrbEntity>of(GloomOrbEntity::new, MobCategory.MISC)
                     .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("gloom_orb"));
+    public static final DeferredHolder<EntityType<?>, EntityType<StormBoltEntity>> STORM_BOLT = ENTITIES.register("storm_bolt",
+            () -> EntityType.Builder.<StormBoltEntity>of(StormBoltEntity::new, MobCategory.MISC)
+                    .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("storm_bolt"));
+    public static final DeferredHolder<EntityType<?>, EntityType<FireballEntity>> FIREBALL = ENTITIES.register("fireball",
+            () -> EntityType.Builder.<FireballEntity>of(FireballEntity::new, MobCategory.MISC)
+                    .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("fireball"));
     public static final DeferredHolder<EntityType<?>, EntityType<VeilArrowEntity>> VEIL_ARROW = ENTITIES.register("veil_arrow",
             () -> EntityType.Builder.<VeilArrowEntity>of(VeilArrowEntity::new, MobCategory.MISC)
                     .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("veil_arrow"));

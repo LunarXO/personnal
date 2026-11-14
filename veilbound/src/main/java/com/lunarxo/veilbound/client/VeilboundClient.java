@@ -1,15 +1,15 @@
 package com.lunarxo.veilbound.client;
 
 import com.lunarxo.veilbound.Veilbound;
+import com.lunarxo.veilbound.client.model.CrystalGolemModel;
+import com.lunarxo.veilbound.client.model.GlimmerfoxModel;
 import com.lunarxo.veilbound.client.particle.ShardSparkleParticle;
 import com.lunarxo.veilbound.registry.ModEntities;
 import com.lunarxo.veilbound.registry.ModParticles;
 
 import net.minecraft.client.model.BatModel;
 import net.minecraft.client.model.BlazeModel;
-import net.minecraft.client.model.FoxModel;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.IronGolemModel;
 import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -30,7 +30,7 @@ public class VeilboundClient {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.GLIMMERFOX.get(),
-                ctx -> mobRenderer(ctx, new FoxModel(ctx.bakeLayer(ModelLayers.FOX)), 0.4F, Veilbound.id("textures/entity/glimmerfox.png")));
+                ctx -> mobRenderer(ctx, new GlimmerfoxModel(ctx.bakeLayer(ModelLayers.FOX)), 0.4F, Veilbound.id("textures/entity/glimmerfox.png")));
         event.registerEntityRenderer(ModEntities.SHARDLING.get(),
                 ctx -> mobRenderer(ctx, new SlimeModel(ctx.bakeLayer(ModelLayers.SLIME)), 0.2F, Veilbound.id("textures/entity/shardling.png")));
         event.registerEntityRenderer(ModEntities.VEIL_MOTH.get(),
@@ -42,7 +42,7 @@ public class VeilboundClient {
         event.registerEntityRenderer(ModEntities.EMBER_WISP.get(),
                 ctx -> mobRenderer(ctx, new BlazeModel(ctx.bakeLayer(ModelLayers.BLAZE)), 0.3F, Veilbound.id("textures/entity/ember_wisp.png")));
         event.registerEntityRenderer(ModEntities.CRYSTAL_GOLEM.get(),
-                ctx -> mobRenderer(ctx, new IronGolemModel(ctx.bakeLayer(ModelLayers.IRON_GOLEM)), 0.9F, Veilbound.id("textures/entity/crystal_golem.png")));
+                ctx -> mobRenderer(ctx, new CrystalGolemModel(ctx.bakeLayer(ModelLayers.IRON_GOLEM)), 0.9F, Veilbound.id("textures/entity/crystal_golem.png")));
         event.registerEntityRenderer(ModEntities.HOLLOW_KING.get(),
                 ctx -> mobRenderer(ctx, new HumanoidModel<>(ctx.bakeLayer(ModelLayers.ZOMBIE)), 0.8F, Veilbound.id("textures/entity/hollow_king.png")));
 
@@ -59,16 +59,16 @@ public class VeilboundClient {
         event.registerSpriteSet(ModParticles.SHARD_SPARKLE.get(), ShardSparkleParticle.Provider::new);
     }
 
-    @SuppressWarnings("unchecked")
     private static <T extends Mob> EntityRenderer<T> mobRenderer(EntityRendererProvider.Context ctx, EntityModel<?> model, float shadow, ResourceLocation texture) {
-        return (EntityRenderer<T>) new SimpleMobRenderer<Mob>((EntityModel<Mob>) model, ctx, shadow, texture);
+        return new SimpleMobRenderer<>(ctx, model, shadow, texture);
     }
 
     private static class SimpleMobRenderer<T extends Mob> extends MobRenderer<T, EntityModel<T>> {
         private final ResourceLocation texture;
 
-        SimpleMobRenderer(EntityModel<T> model, EntityRendererProvider.Context ctx, float shadow, ResourceLocation texture) {
-            super(ctx, model, shadow);
+        @SuppressWarnings("unchecked")
+        SimpleMobRenderer(EntityRendererProvider.Context ctx, EntityModel<?> model, float shadow, ResourceLocation texture) {
+            super(ctx, (EntityModel<T>) model, shadow);
             this.texture = texture;
         }
 

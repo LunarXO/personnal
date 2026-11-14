@@ -330,7 +330,8 @@ def gen_models():
             jwrite(f"{ASSETS}/models/block/{prefix}_{outname}.json", json.loads(s))
     # item models
     for name in BLOCK_ITEMS:
-        jwrite(f"{ASSETS}/models/item/{name}.json", {"parent": f"veilbound:block/{name}"})
+        block_model = f"{name}_inventory" if name in STAIR_SLAB_WALL and name.endswith("_wall") else name
+        jwrite(f"{ASSETS}/models/item/{name}.json", {"parent": f"veilbound:block/{block_model}"})
     for name in ITEMS:
         parent = "minecraft:item/handheld" if name in HANDHELD_ITEMS else "minecraft:item/generated"
         jwrite(f"{ASSETS}/models/item/{name}.json", {"parent": parent, "textures": {"layer0": f"veilbound:item/{name}"}})

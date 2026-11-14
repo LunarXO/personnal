@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "VGV",
+    "GAG",
+    "VGV"
+  ],
+  "key": {
+    "V": {
+      "item": "veilbound:voidstone"
+    },
+    "G": {
+      "item": "veilbound:glimmer_crystal_block"
+    },
+    "A": {
+      "item": "veilbound:aetherite_ingot"
+    }
+  },
+  "result": {
+    "id": "veilbound:gravity_anchor",
+    "count": 1
+  }
+}

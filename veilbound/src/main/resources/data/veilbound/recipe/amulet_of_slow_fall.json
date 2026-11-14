@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "GAG",
+    " G "
+  ],
+  "key": {
+    "G": {
+      "item": "veilbound:glimmer_shard"
+    },
+    "A": {
+      "item": "veilbound:aetherite_ingot"
+    }
+  },
+  "result": {
+    "id": "veilbound:amulet_of_slow_fall",
+    "count": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "veilbound:veilstone",
+    "veilbound:cobbled_veilstone",
+    "veilbound:veil_turf",
+    "veilbound:abyss_stone"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " A ",
+    "AVA",
+    " A "
+  ],
+  "key": {
+    "A": {
+      "item": "veilbound:aetherite_ingot"
+    },
+    "V": {
+      "item": "veilbound:voidstone_ingot"
+    }
+  },
+  "result": {
+    "id": "veilbound:veil_key",
+    "count": 1
+  }
+}

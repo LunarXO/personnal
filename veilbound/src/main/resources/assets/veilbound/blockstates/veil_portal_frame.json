@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "veilbound:block/veil_portal_frame"
+    }
+  }
+}

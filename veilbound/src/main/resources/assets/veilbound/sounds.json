@@ -1,0 +1,65 @@
+{
+  "portal_open": {
+    "sounds": [
+      {
+        "name": "veilbound:portal_open"
+      }
+    ]
+  },
+  "portal_travel": {
+    "sounds": [
+      {
+        "name": "veilbound:portal_travel"
+      }
+    ]
+  },
+  "portal_ambient": {
+    "sounds": [
+      {
+        "name": "veilbound:portal_ambient"
+      }
+    ]
+  },
+  "shard_shoot": {
+    "sounds": [
+      {
+        "name": "veilbound:shard_shoot"
+      }
+    ]
+  },
+  "gloom_cast": {
+    "sounds": [
+      {
+        "name": "veilbound:gloom_cast"
+      }
+    ]
+  },
+  "wisp_shoot": {
+    "sounds": [
+      {
+        "name": "veilbound:wisp_shoot"
+      }
+    ]
+  },
+  "boss_roar": {
+    "sounds": [
+      {
+        "name": "veilbound:boss_roar"
+      }
+    ]
+  },
+  "storm_cast": {
+    "sounds": [
+      {
+        "name": "veilbound:storm_cast"
+      }
+    ]
+  },
+  "ember_cast": {
+    "sounds": [
+      {
+        "name": "veilbound:ember_cast"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "pattern": [
+    "G",
+    "S",
+    "F"
+  ],
+  "key": {
+    "G": {
+      "item": "veilbound:glimmer_shard"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "id": "veilbound:veil_arrow",
+    "count": 4
+  }
+}

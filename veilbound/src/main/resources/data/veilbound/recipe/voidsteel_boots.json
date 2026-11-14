@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "pattern": [
+    "M M",
+    "M M"
+  ],
+  "key": {
+    "M": {
+      "item": "veilbound:voidstone_ingot"
+    }
+  },
+  "result": {
+    "id": "veilbound:voidsteel_boots",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "veilbound:veilberry"
+    },
+    {
+      "item": "veilbound:ember_fruit"
+    }
+  ],
+  "result": {
+    "id": "veilbound:gloom_stew",
+    "count": 1
+  }
+}

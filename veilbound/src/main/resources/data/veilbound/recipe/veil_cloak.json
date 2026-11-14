@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "S S",
+    "SVS",
+    "VVV"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "V": {
+      "item": "veilbound:voidstone"
+    }
+  },
+  "result": {
+    "id": "veilbound:veil_cloak",
+    "count": 1
+  }
+}

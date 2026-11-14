@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "veilbound:block/glimmer_shard_ore"
+    }
+  }
+}

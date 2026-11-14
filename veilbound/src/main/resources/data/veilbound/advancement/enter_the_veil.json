@@ -1,0 +1,33 @@
+{
+  "parent": "veilbound:root",
+  "criteria": {
+    "entered": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "veilbound:the_veil"
+      }
+    }
+  },
+  "display": {
+    "icon": {
+      "id": "veilbound:veil_key",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.veilbound.enter_the_veil.title"
+    },
+    "description": {
+      "translate": "advancements.veilbound.enter_the_veil.description"
+    },
+    "frame": "goal",
+    "announce_to_chat": true,
+    "show_toast": true,
+    "hidden": false
+  },
+  "requirements": [
+    [
+      "entered"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

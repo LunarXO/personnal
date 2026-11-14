@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "pattern": [
+    "M",
+    "M",
+    "S"
+  ],
+  "key": {
+    "M": {
+      "item": "veilbound:ember_core"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "veilbound:emberbrand_sword",
+    "count": 1
+  }
+}

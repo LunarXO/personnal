@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    " E ",
+    " S ",
+    "VVV"
+  ],
+  "key": {
+    "E": {
+      "item": "veilbound:ember_core"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "V": {
+      "item": "veilbound:voidstone"
+    }
+  },
+  "result": {
+    "id": "veilbound:ember_brazier",
+    "count": 1
+  }
+}

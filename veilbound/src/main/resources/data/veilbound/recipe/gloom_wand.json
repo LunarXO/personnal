@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "combat",
+  "pattern": [
+    " V",
+    "SV",
+    "S "
+  ],
+  "key": {
+    "V": {
+      "item": "veilbound:voidstone_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "veilbound:gloom_wand",
+    "count": 1
+  }
+}

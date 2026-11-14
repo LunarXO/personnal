@@ -1,0 +1,80 @@
+{
+  "carvers": {},
+  "downfall": 0.0,
+  "has_precipitation": false,
+  "temperature": 0.5,
+  "effects": {
+    "fog_color": 1055283,
+    "sky_color": 1976906,
+    "water_color": 2759242,
+    "water_fog_color": 1707824,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    }
+  },
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [
+      {
+        "type": "veilbound:veil_moth",
+        "weight": 8,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "veilbound:shardling",
+        "weight": 12,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "veilbound:crystal_golem",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "veilbound:hollow_husk",
+        "weight": 30,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "veilbound:ember_wisp",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "veilbound:ore_glimmer_shard",
+      "veilbound:ore_aetherite_deep"
+    ],
+    [
+      "veilbound:crystal_cluster"
+    ],
+    [],
+    [],
+    []
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "veilbound:veilstone",
+    "veilbound:cobbled_veilstone",
+    "veilbound:veilstone_bricks",
+    "veilbound:chiseled_veilstone",
+    "veilbound:voidstone",
+    "veilbound:voidstone_bricks",
+    "veilbound:aetherite_ore",
+    "veilbound:deepslate_aetherite_ore",
+    "veilbound:voidstone_ore",
+    "veilbound:glimmer_shard_ore",
+    "veilbound:glimmer_crystal_block",
+    "veilbound:raw_aetherite_block",
+    "veilbound:raw_voidstone_block",
+    "veilbound:veil_portal_frame",
+    "veilbound:veil_portal",
+    "veilbound:gravity_anchor",
+    "veilbound:resonant_spire",
+    "veilbound:ember_brazier",
+    "veilbound:abyss_stone",
+    "veilbound:abyss_portal_frame",
+    "veilbound:abyss_portal",
+    "veilbound:veil_turf",
+    "veilbound:veilstone_stairs",
+    "veilbound:veilstone_slab",
+    "veilbound:veilstone_wall"
+  ]
+}

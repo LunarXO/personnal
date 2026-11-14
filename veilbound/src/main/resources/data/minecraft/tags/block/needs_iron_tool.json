@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "veilbound:voidstone_ore",
+    "veilbound:voidstone",
+    "veilbound:voidstone_bricks"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "veilbound:aetherite_ore",
+    "veilbound:deepslate_aetherite_ore",
+    "veilbound:glimmer_shard_ore"
+  ]
+}

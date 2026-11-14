@@ -1,0 +1,78 @@
+{
+  "carvers": {},
+  "downfall": 0.0,
+  "has_precipitation": false,
+  "temperature": 0.5,
+  "effects": {
+    "fog_color": 2100485,
+    "sky_color": 3349002,
+    "water_color": 16737792,
+    "water_fog_color": 13386752,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    }
+  },
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [
+      {
+        "type": "veilbound:veil_moth",
+        "weight": 6,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "veilbound:glimmerfox",
+        "weight": 4,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "type": "veilbound:ember_wisp",
+        "weight": 35,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "veilbound:veil_reaver",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "veilbound:hollow_husk",
+        "weight": 25,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "veilbound:ore_voidstone",
+      "veilbound:ore_aetherite"
+    ],
+    [],
+    [],
+    [],
+    []
+  ]
+}

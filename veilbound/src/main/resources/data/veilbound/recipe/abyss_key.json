@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " V ",
+    "VEV",
+    " V "
+  ],
+  "key": {
+    "V": {
+      "item": "veilbound:voidstone_ingot"
+    },
+    "E": {
+      "item": "veilbound:ember_core"
+    }
+  },
+  "result": {
+    "id": "veilbound:abyss_key",
+    "count": 1
+  }
+}

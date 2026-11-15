@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:arrow"
+    },
+    {
+      "item": "realmwalker:prism_shard"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:amber_crossbow_bolts",
+    "count": 8
+  },
+  "category": "misc"
+}

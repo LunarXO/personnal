@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "realmwalker:waystone_shard"
+    },
+    {
+      "item": "realmwalker:wayfarers_ember"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:spark_lumenfen",
+    "count": 1
+  },
+  "category": "misc"
+}

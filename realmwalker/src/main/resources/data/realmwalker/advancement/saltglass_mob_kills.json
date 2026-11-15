@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:saltglass_blade"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.saltglass_mob_kills.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.saltglass_mob_kills.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:saltglass_crystals"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "saltglass_mob_kills",
+        "min_count": 15
+      }
+    },
+    "phantoms": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "saltglass_phantom_kills",
+        "min_count": 2
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ],
+    [
+      "phantoms"
+    ]
+  ],
+  "parent": "realmwalker:saltglass_crystals"
+}

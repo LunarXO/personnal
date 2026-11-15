@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MMM",
+    "M M"
+  ],
+  "key": {
+    "M": {
+      "item": "realmwalker:glowcap"
+    }
+  },
+  "result": {
+    "id": "realmwalker:capling_cap_helm",
+    "count": 1
+  },
+  "category": "misc"
+}

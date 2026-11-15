@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "id": "realmwalker:furred_parka",
+    "count": 1
+  },
+  "category": "misc"
+}

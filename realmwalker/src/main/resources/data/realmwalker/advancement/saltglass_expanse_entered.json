@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:spark_saltglass_expanse"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.saltglass_expanse_entered.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.saltglass_expanse_entered.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:root"
+  },
+  "criteria": {
+    "enter": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "realmwalker:saltglass_expanse"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enter"
+    ]
+  ],
+  "parent": "realmwalker:root"
+}

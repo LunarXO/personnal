@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:amber_crystal"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.saltglass_crystals.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.saltglass_crystals.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:saltglass_ruins"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "saltglass_crystals",
+        "min_count": 5
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:saltglass_ruins"
+}

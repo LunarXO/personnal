@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "realmwalker:stormglass"
+    },
+    {
+      "item": "realmwalker:thunder_shard"
+    },
+    {
+      "item": "minecraft:glass"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:stormglass_lens",
+    "count": 1
+  },
+  "category": "misc"
+}

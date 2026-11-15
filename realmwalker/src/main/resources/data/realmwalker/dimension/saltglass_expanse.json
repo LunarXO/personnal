@@ -1,0 +1,48 @@
+{
+  "type": "realmwalker:saltglass_expanse",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "parameters": {
+            "temperature": 0.7,
+            "humidity": 0.8,
+            "continentalness": 0.1,
+            "erosion": 0.2,
+            "depth": 0.2,
+            "weirdness": 0.0,
+            "offset": 0.0
+          },
+          "biome": "realmwalker:salt_flats"
+        },
+        {
+          "parameters": {
+            "temperature": 0.3,
+            "humidity": 0.4,
+            "continentalness": -0.2,
+            "erosion": 0.0,
+            "depth": 0.4,
+            "weirdness": 0.3,
+            "offset": 0.0
+          },
+          "biome": "realmwalker:glass_dunes"
+        },
+        {
+          "parameters": {
+            "temperature": -0.2,
+            "humidity": 0.1,
+            "continentalness": 0.4,
+            "erosion": -0.3,
+            "depth": -0.4,
+            "weirdness": -0.2,
+            "offset": 0.0
+          },
+          "biome": "realmwalker:drowned_basin"
+        }
+      ]
+    },
+    "settings": "realmwalker:saltglass_expanse"
+  }
+}

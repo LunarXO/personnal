@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:water_bottle"
+    },
+    {
+      "item": "realmwalker:salt_block"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:thirst_flask",
+    "count": 1
+  },
+  "category": "misc"
+}

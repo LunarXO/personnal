@@ -1,0 +1,60 @@
+package com.realmwalker.entity.stormspire;
+
+import com.realmwalker.ModDimensions;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.entity.LivingEntity;
+
+public class RodKnightEntity extends Monster {
+    public RodKnightEntity(EntityType<? extends Monster> type, Level level) {
+        super(type, level);
+    }
+
+    public static AttributeSupplier.Builder createAttributes() {
+        return Monster.createMonsterAttributes()
+                .add(Attributes.MAX_HEALTH, 50.0D)
+                .add(Attributes.ATTACK_DAMAGE, 10.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.27D)
+                .add(Attributes.FOLLOW_RANGE, 32.0D)
+                ;
+    }
+
+    public static boolean checkSpawn(EntityType<? extends RodKnightEntity> type, ServerLevelAccessor level, MobSpawnType reason, BlockPos pos, RandomSource random) {
+        return level.getLevel().dimension().equals(ModDimensions.STORMSPIRE) && Monster.checkMonsterSpawnRules(type, level, reason, pos, random);
+    }
+
+    @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 0.8D));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(9, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+    }
+
+    @Override
+    public boolean hurt(net.minecraft.world.damagesource.DamageSource source, float amount) {
+        if (!this.onGround() && !source.is(net.minecraft.tags.DamageTypeTags.IS_FALL)) {
+            return false;
+        }
+        return super.hurt(source, amount);
+    }
+}

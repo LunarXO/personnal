@@ -1,0 +1,93 @@
+{
+  "portal_open": {
+    "sounds": [
+      {
+        "name": "minecraft:block.end_portal_frame.fill"
+      }
+    ]
+  },
+  "portal_travel": {
+    "sounds": [
+      {
+        "name": "minecraft:block.portal.travel"
+      }
+    ]
+  },
+  "portal_ambient": {
+    "sounds": [
+      {
+        "name": "minecraft:block.portal.ambient"
+      }
+    ]
+  },
+  "spark_ignite": {
+    "sounds": [
+      {
+        "name": "minecraft:item.firecharge.use"
+      }
+    ]
+  },
+  "boss_roar": {
+    "sounds": [
+      {
+        "name": "minecraft:entity.ender_dragon.growl"
+      }
+    ]
+  },
+  "boss_hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:entity.ender_dragon.hurt"
+      }
+    ]
+  },
+  "quest_complete": {
+    "sounds": [
+      {
+        "name": "minecraft:entity.player.levelup"
+      }
+    ]
+  },
+  "codex_open": {
+    "sounds": [
+      {
+        "name": "minecraft:item.book.page_turn"
+      }
+    ]
+  },
+  "mob_hurt": {
+    "sounds": [
+      {
+        "name": "minecraft:entity.generic.hurt"
+      }
+    ]
+  },
+  "mob_death": {
+    "sounds": [
+      {
+        "name": "minecraft:entity.generic.die"
+      }
+    ]
+  },
+  "mob_shoot": {
+    "sounds": [
+      {
+        "name": "minecraft:entity.arrow.shoot"
+      }
+    ]
+  },
+  "shrine_loot": {
+    "sounds": [
+      {
+        "name": "minecraft:block.amethyst_block.chime"
+      }
+    ]
+  },
+  "lightning_charge": {
+    "sounds": [
+      {
+        "name": "minecraft:entity.lightning_bolt.thunder"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:buried_ruin"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.saltglass_ruins.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.saltglass_ruins.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:saltglass_first_night"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "saltglass_ruins",
+        "min_count": 3
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:saltglass_first_night"
+}

@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:gear_block"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.cogspire_reach_arena.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.cogspire_reach_arena.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:cogspire_steam_sources"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "cogspire_reach_arena",
+        "min_count": 1
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:cogspire_steam_sources"
+}

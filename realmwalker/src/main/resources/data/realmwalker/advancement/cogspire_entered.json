@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:spark_cogspire"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.cogspire_entered.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.cogspire_entered.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:root"
+  },
+  "criteria": {
+    "enter": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "realmwalker:cogspire"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enter"
+    ]
+  ],
+  "parent": "realmwalker:root"
+}

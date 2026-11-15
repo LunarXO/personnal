@@ -1,0 +1,60 @@
+{
+  "carvers": {},
+  "downfall": 0.0,
+  "has_precipitation": false,
+  "precipitation": "none",
+  "temperature": 1.0,
+  "effects": {
+    "fog_color": 5913118,
+    "sky_color": 2759180,
+    "water_color": 3810320,
+    "water_fog_color": 3810320,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    }
+  },
+  "spawn_costs": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "realmwalker:steam_golem",
+        "weight": 30,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "realmwalker:scrap_hound",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "underground_water_creature": [],
+    "axolotls": [],
+    "misc": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "realmwalker:ore_brass"
+    ],
+    [],
+    [],
+    [
+      "realmwalker:patch_steam_vent"
+    ],
+    []
+  ]
+}

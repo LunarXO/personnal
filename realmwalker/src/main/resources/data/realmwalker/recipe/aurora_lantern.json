@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "T"
+  ],
+  "key": {
+    "A": {
+      "item": "realmwalker:aurora_glass"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "result": {
+    "id": "realmwalker:aurora_lantern",
+    "count": 1
+  },
+  "category": "misc"
+}

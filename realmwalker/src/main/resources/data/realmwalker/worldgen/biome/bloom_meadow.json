@@ -1,0 +1,47 @@
+{
+  "carvers": {},
+  "downfall": 0.5,
+  "has_precipitation": true,
+  "precipitation": "rain",
+  "temperature": 0.8,
+  "effects": {
+    "fog_color": 16774084,
+    "sky_color": 15398872,
+    "water_color": 11065584,
+    "water_fog_color": 11065584,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    }
+  },
+  "spawn_costs": {},
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "underground_water_creature": [],
+    "axolotls": [],
+    "misc": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [
+      "realmwalker:everbloom_home"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      "realmwalker:patch_sunpetal"
+    ],
+    []
+  ]
+}

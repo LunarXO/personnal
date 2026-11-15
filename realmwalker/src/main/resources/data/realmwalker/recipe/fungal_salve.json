@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "realmwalker:glowcap"
+    },
+    {
+      "item": "realmwalker:moth_dust"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:fungal_salve",
+    "count": 1
+  },
+  "category": "misc"
+}

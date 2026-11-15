@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GSG",
+    " G "
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "S": {
+      "item": "realmwalker:prism_shard"
+    }
+  },
+  "result": {
+    "id": "realmwalker:glass_shield",
+    "count": 1
+  },
+  "category": "misc"
+}

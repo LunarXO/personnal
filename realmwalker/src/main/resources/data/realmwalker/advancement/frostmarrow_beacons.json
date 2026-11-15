@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:beacon_fire_site"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.frostmarrow_beacons.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.frostmarrow_beacons.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:frostmarrow_parka"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "frostmarrow_beacons",
+        "min_count": 4
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:frostmarrow_parka"
+}

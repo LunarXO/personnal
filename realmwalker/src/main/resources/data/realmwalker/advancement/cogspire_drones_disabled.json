@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:wrench"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.cogspire_drones_disabled.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.cogspire_drones_disabled.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:cogspire_engines"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "cogspire_drones_disabled",
+        "min_count": 6
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:cogspire_engines"
+}

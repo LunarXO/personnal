@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "realmwalker:spring_coil"
+    }
+  },
+  "result": {
+    "id": "realmwalker:cog_armor",
+    "count": 1
+  },
+  "category": "misc"
+}

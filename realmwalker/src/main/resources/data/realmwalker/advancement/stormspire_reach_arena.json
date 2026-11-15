@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:stormglass"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.stormspire_reach_arena.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.stormspire_reach_arena.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:stormspire_lens"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "stormspire_reach_arena",
+        "min_count": 1
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:stormspire_lens"
+}

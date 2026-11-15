@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T",
+    " S",
+    "S "
+  ],
+  "key": {
+    "T": {
+      "item": "realmwalker:thunder_shard"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "realmwalker:stormcaller_spear",
+    "count": 1
+  },
+  "category": "misc"
+}

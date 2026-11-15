@@ -1,0 +1,48 @@
+{
+  "type": "realmwalker:frostmarrow",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "parameters": {
+            "temperature": 0.7,
+            "humidity": 0.8,
+            "continentalness": 0.1,
+            "erosion": 0.2,
+            "depth": 0.2,
+            "weirdness": 0.0,
+            "offset": 0.0
+          },
+          "biome": "realmwalker:whiteout_plains"
+        },
+        {
+          "parameters": {
+            "temperature": 0.3,
+            "humidity": 0.4,
+            "continentalness": -0.2,
+            "erosion": 0.0,
+            "depth": 0.4,
+            "weirdness": 0.3,
+            "offset": 0.0
+          },
+          "biome": "realmwalker:rib_valley"
+        },
+        {
+          "parameters": {
+            "temperature": -0.2,
+            "humidity": 0.1,
+            "continentalness": 0.4,
+            "erosion": -0.3,
+            "depth": -0.4,
+            "weirdness": -0.2,
+            "offset": 0.0
+          },
+          "biome": "realmwalker:aurora_peaks"
+        }
+      ]
+    },
+    "settings": "realmwalker:frostmarrow"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SIS",
+    " T ",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "realmwalker:spring_coil"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "T": {
+      "item": "minecraft:tripwire_hook"
+    }
+  },
+  "result": {
+    "id": "realmwalker:clockwork_crossbow",
+    "count": 1
+  },
+  "category": "misc"
+}

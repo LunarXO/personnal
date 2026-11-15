@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BB",
+    "BS",
+    " S"
+  ],
+  "key": {
+    "B": {
+      "item": "realmwalker:boneice"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "realmwalker:frostmarrow_axe",
+    "count": 1
+  },
+  "category": "misc"
+}

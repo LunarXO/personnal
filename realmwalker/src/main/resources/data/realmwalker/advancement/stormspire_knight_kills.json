@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:rod_knight_plate"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.stormspire_knight_kills.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.stormspire_knight_kills.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:stormspire_rods"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "stormspire_knight_kills",
+        "min_count": 5
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:stormspire_rods"
+}

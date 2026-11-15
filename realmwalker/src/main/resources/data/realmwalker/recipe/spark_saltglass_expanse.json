@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "realmwalker:heart_of_the_mire"
+    },
+    {
+      "item": "realmwalker:wayfarers_ember"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:spark_saltglass_expanse",
+    "count": 1
+  },
+  "category": "misc"
+}

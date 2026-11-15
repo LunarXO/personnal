@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:marrow_tonic"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.frostmarrow_tonic.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.frostmarrow_tonic.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:frostmarrow_wolf_kills"
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "realmwalker:marrow_tonic"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "realmwalker:frostmarrow_wolf_kills"
+}

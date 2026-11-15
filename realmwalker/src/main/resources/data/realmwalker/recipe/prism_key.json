@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "realmwalker:prism_shard"
+    },
+    {
+      "item": "realmwalker:prism_shard"
+    },
+    {
+      "item": "realmwalker:prism_shard"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:prism_key",
+    "count": 1
+  },
+  "category": "misc"
+}

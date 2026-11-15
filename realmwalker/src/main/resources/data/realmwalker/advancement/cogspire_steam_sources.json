@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:pressure_gauge"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.cogspire_steam_sources.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.cogspire_steam_sources.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:cogspire_drones_disabled"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "cogspire_steam_sources",
+        "min_count": 3
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:cogspire_drones_disabled"
+}

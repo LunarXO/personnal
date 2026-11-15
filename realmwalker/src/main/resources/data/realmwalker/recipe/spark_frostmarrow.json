@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "realmwalker:master_gear"
+    },
+    {
+      "item": "realmwalker:wayfarers_ember"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:spark_frostmarrow",
+    "count": 1
+  },
+  "category": "misc"
+}

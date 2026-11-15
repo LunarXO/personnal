@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:bone_spear"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.frostmarrow_wolf_kills.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.frostmarrow_wolf_kills.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:frostmarrow_beacons"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "frostmarrow_wolf_kills",
+        "min_count": 12
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:frostmarrow_beacons"
+}

@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:stormglass_lens"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.stormspire_lens.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.stormspire_lens.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:stormspire_knight_kills"
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "realmwalker:stormglass_lens"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "realmwalker:stormspire_knight_kills"
+}

@@ -1,0 +1,60 @@
+{
+  "carvers": {},
+  "downfall": 0.8,
+  "has_precipitation": true,
+  "precipitation": "rain",
+  "temperature": 0.5,
+  "effects": {
+    "fog_color": 1780282,
+    "sky_color": 924454,
+    "water_color": 1192762,
+    "water_fog_color": 1192762,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    }
+  },
+  "spawn_costs": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "realmwalker:capling",
+        "weight": 30,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "realmwalker:bog_lurker",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "underground_water_creature": [],
+    "axolotls": [],
+    "misc": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "realmwalker:tree_mirewood",
+      "realmwalker:patch_glowcap",
+      "realmwalker:patch_spore_moss"
+    ],
+    []
+  ]
+}

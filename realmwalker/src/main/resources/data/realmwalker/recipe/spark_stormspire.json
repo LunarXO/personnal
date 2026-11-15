@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "realmwalker:frozen_heartbone"
+    },
+    {
+      "item": "realmwalker:wayfarers_ember"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:spark_stormspire",
+    "count": 1
+  },
+  "category": "misc"
+}

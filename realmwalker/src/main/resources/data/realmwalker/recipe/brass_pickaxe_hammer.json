@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "realmwalker:spring_coil"
+    }
+  },
+  "result": {
+    "id": "realmwalker:brass_pickaxe_hammer",
+    "count": 1
+  },
+  "category": "misc"
+}

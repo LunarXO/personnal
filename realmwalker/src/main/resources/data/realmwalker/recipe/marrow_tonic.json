@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:honey_bottle"
+    },
+    {
+      "item": "realmwalker:frozen_marrow"
+    },
+    {
+      "item": "realmwalker:aurora_glass"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:marrow_tonic",
+    "count": 1
+  },
+  "category": "misc"
+}

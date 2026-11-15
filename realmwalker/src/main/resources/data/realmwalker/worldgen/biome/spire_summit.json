@@ -1,0 +1,58 @@
+{
+  "carvers": {},
+  "downfall": 0.5,
+  "has_precipitation": true,
+  "precipitation": "rain",
+  "temperature": 0.8,
+  "effects": {
+    "fog_color": 2830154,
+    "sky_color": 1711411,
+    "water_color": 2303811,
+    "water_fog_color": 2303811,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    }
+  },
+  "spawn_costs": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "realmwalker:rod_knight",
+        "weight": 30,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "realmwalker:storm_hawk",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "underground_water_creature": [],
+    "axolotls": [],
+    "misc": []
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [
+      "realmwalker:arena_stormspire"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ]
+}

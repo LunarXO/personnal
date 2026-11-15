@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:glowcap_shrine"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.lumenfen_shrines.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.lumenfen_shrines.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:lumenfen_entered"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "lumenfen_shrines",
+        "min_count": 3
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:lumenfen_entered"
+}

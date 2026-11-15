@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:heart_of_the_mire"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.lumenfen_boss.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.lumenfen_boss.desc"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:lumenfen_key"
+  },
+  "criteria": {
+    "kill": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "realmwalker:mirefather"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "kill"
+    ]
+  ],
+  "parent": "realmwalker:lumenfen_key"
+}

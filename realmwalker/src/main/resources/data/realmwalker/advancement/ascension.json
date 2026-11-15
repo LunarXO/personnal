@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:sigil_of_five"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.ascension.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.ascension.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:stormspire_boss"
+  },
+  "criteria": {
+    "done": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "ascension",
+        "min_count": 1
+      }
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ],
+  "parent": "realmwalker:stormspire_boss"
+}

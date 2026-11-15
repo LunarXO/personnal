@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G",
+    "T"
+  ],
+  "key": {
+    "G": {
+      "item": "realmwalker:glowcap"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "result": {
+    "id": "realmwalker:spore_lantern",
+    "count": 1
+  },
+  "category": "misc"
+}

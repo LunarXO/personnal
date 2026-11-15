@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B",
+    " S",
+    "S "
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "realmwalker:bone_spear",
+    "count": 1
+  },
+  "category": "misc"
+}

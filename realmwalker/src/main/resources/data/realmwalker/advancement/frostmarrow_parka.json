@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:furred_parka"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.frostmarrow_parka.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.frostmarrow_parka.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:frostmarrow_entered"
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "realmwalker:furred_parka"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "realmwalker:frostmarrow_entered"
+}

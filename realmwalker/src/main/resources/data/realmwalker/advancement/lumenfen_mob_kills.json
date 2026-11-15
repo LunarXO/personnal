@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:glowcap_blade"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.lumenfen_mob_kills.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.lumenfen_mob_kills.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:lumenfen_shrines"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "lumenfen_mob_kills",
+        "min_count": 20
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:lumenfen_shrines"
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "realmwalker:amber_crystal"
+    }
+  ],
+  "result": {
+    "id": "realmwalker:prism_shard",
+    "count": 4
+  },
+  "category": "misc"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "realmwalker:prism_shard"
+    }
+  },
+  "result": {
+    "id": "realmwalker:mirage_cloak",
+    "count": 1
+  },
+  "category": "misc"
+}

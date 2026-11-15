@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:gear_engine"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.cogspire_engines.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.cogspire_engines.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:cogspire_entered"
+  },
+  "criteria": {
+    "count": {
+      "trigger": "realmwalker:generic",
+      "conditions": {
+        "event": "cogspire_engines",
+        "min_count": 3
+      }
+    }
+  },
+  "requirements": [
+    [
+      "count"
+    ]
+  ],
+  "parent": "realmwalker:cogspire_entered"
+}

@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:wayfarers_codex"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.root.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.root.desc"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": {
+      "texture": "realmwalker:textures/block/waystone_bricks.png"
+    }
+  },
+  "criteria": {
+    "get_codex": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "realmwalker:wayfarers_codex"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_codex"
+    ]
+  ]
+}

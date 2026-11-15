@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:addition",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "realmwalker:waystone_shrine"
+  ],
+  "step": "surface_structures"
+}

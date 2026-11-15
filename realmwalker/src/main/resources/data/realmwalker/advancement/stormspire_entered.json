@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:spark_stormspire"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.stormspire_entered.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.stormspire_entered.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:root"
+  },
+  "criteria": {
+    "enter": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "realmwalker:stormspire"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enter"
+    ]
+  ],
+  "parent": "realmwalker:root"
+}

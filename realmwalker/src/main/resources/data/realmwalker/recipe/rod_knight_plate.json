@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "realmwalker:chain_block"
+    }
+  },
+  "result": {
+    "id": "realmwalker:rod_knight_plate",
+    "count": 1
+  },
+  "category": "misc"
+}

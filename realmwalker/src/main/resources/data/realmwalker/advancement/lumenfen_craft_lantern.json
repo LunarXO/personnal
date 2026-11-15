@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "realmwalker:spore_lantern"
+    },
+    "title": {
+      "translate": "advancement.realmwalker.lumenfen_craft_lantern.title"
+    },
+    "description": {
+      "translate": "advancement.realmwalker.lumenfen_craft_lantern.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "parent": "realmwalker:lumenfen_mob_kills"
+  },
+  "criteria": {
+    "get": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "realmwalker:spore_lantern"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get"
+    ]
+  ],
+  "parent": "realmwalker:lumenfen_mob_kills"
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "realmwalker:block/lightning_rod"
+    },
+    "powered=true": {
+      "model": "realmwalker:block/lightning_rod_powered"
+    }
+  }
+}

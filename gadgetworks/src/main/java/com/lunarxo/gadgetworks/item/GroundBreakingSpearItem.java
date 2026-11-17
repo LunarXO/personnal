@@ -25,7 +25,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
@@ -35,7 +34,12 @@ public class GroundBreakingSpearItem extends SwordItem {
     private static final float SLAM_DAMAGE = 5.0F;
 
     public GroundBreakingSpearItem() {
-        super(Tiers.IRON, new Item.Properties().durability(1024));
+        super(Tiers.IRON, new Item.Properties().durability(1024).attributes(
+                SwordItem.createAttributes(Tiers.IRON, 4, -2.8F)
+                        .withModifierAdded(Attributes.ENTITY_INTERACTION_RANGE,
+                                new AttributeModifier(Gadgetworks.id("spear_reach"), 2.0D,
+                                        AttributeModifier.Operation.ADD_VALUE),
+                                EquipmentSlotGroup.MAINHAND)));
     }
 
     @Override
@@ -76,15 +80,6 @@ public class GroundBreakingSpearItem extends SwordItem {
             stack.hurtAndBreak(3, player, LivingEntity.getSlotForHand(hand));
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
-    }
-
-    @Override
-    public ItemAttributeModifiers getDefaultAttributeModifiers(ItemStack stack) {
-        return super.getDefaultAttributeModifiers(stack)
-                .withModifierAdded(Attributes.ENTITY_INTERACTION_RANGE,
-                        new AttributeModifier(Gadgetworks.id("spear_reach"), 2.0D,
-                                AttributeModifier.Operation.ADD_VALUE),
-                        EquipmentSlotGroup.MAINHAND);
     }
 
     @Override

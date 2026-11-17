@@ -1,0 +1,20 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.gadgetworks.electric_field"
+  },
+  "exclusive_set": "#gadgetworks:exclusive_set/electric_field",
+  "max_cost": {
+    "base": 21,
+    "per_level_above_first": 10
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 8
+  },
+  "slots": ["feet"],
+  "supported_items": "#gadgetworks:enchantable/electric_boots",
+  "weight": 2,
+  "effects": {}
+}

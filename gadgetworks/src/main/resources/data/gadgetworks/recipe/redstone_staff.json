@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R",
+    "B",
+    "S"
+  ],
+  "key": {
+    "R": {"item": "minecraft:redstone_block"},
+    "B": {"item": "minecraft:blaze_rod"},
+    "S": {"item": "minecraft:stick"}
+  },
+  "result": {
+    "id": "gadgetworks:redstone_staff",
+    "count": 1
+  }
+}

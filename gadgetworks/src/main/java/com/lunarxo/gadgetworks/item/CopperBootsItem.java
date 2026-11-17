@@ -7,7 +7,7 @@ import net.minecraft.world.item.Item;
 
 public class CopperBootsItem extends ArmorItem {
     public CopperBootsItem() {
-        super(ArmorItem.Type.BOOTS, ModArmorMaterials.COPPER,
+        super(ModArmorMaterials.COPPER, ArmorItem.Type.BOOTS,
                 new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(9)));
     }
 }

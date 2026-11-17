@@ -134,7 +134,7 @@ public class RedstoneStaffItem extends Item {
         if (!client && level instanceof ServerLevel serverLevel) {
             List<Mob> targets = serverLevel.getEntitiesOfClass(Mob.class,
                     player.getBoundingBox().inflate(PULSE_RADIUS),
-                    e -> e != player && e.isAlive());
+                    e -> !e.is(player) && e.isAlive());
             for (Mob mob : targets) {
                 mob.hurt(player.damageSources().playerAttack(player), 4.0F);
                 mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 4));

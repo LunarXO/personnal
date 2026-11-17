@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
@@ -26,8 +27,8 @@ public class ElectricSwordItem extends SwordItem {
     }
 
     @Override
-    public void postHurtEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        super.postHurtEntity(stack, target, attacker);
+    public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        super.postHurtEnemy(stack, target, attacker);
         if (attacker.level().isClientSide || !(attacker.level() instanceof ServerLevel level)) {
             return;
         }
@@ -50,7 +51,7 @@ public class ElectricSwordItem extends SwordItem {
                     target.getX(), target.getY() + target.getBbHeight() * 0.5D, target.getZ(),
                     12, 0.3D, 0.3D, 0.3D, 0.1D);
             level.playSound(null, target.getX(), target.getY(), target.getZ(),
-                    SoundEvents.LIGHTNING_IMPACT, SoundSource.PLAYERS, 0.5F, 1.4F);
+                    SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.PLAYERS, 0.5F, 1.4F);
             stack.hurtAndBreak(1, attacker, LivingEntity.getSlotForHand(attacker.getUsedItemHand()));
         }
     }

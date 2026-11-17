@@ -22,7 +22,6 @@ public class Gadgetworks {
         ModEntities.ENTITIES.register(modEventBus);
         ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         ModComponents.COMPONENTS.register(modEventBus);
-        ModEnchantments.ENCHANTMENTS.register(modEventBus);
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
     }
 

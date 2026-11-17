@@ -382,7 +382,7 @@ export class EarthScene {
     if (v3.len(dir) < 1e-6) dir = [1, 0.5, 0.8];
     dir = v3.norm(dir);
     cam.target = p.slice();
-    cam.pos = v3.add(p, v3.scale(dir, Math.max(distKm, A_KM + 50)));
+    cam.pos = v3.add(p, v3.scale(dir, Math.max(distKm, A_KM + 2)));
   }
 
   update(dt) {

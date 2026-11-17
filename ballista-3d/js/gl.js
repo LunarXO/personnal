@@ -107,6 +107,16 @@ export async function loadB64Text(baseUrl) {
   return text;
 }
 
+// last-resort solid color so a texture always exists
+function solidCanvas(url) {
+  const cv = document.createElement('canvas');
+  cv.width = 64; cv.height = 32;
+  const g = cv.getContext('2d');
+  g.fillStyle = url.includes('earth-day') ? '#1a4a78' : url.includes('earth-night') ? '#060a14' : '#ffffff';
+  g.fillRect(0, 0, 64, 32);
+  return cv;
+}
+
 export function loadB64Image(url, mime) {
   return loadB64Text(url).then((t) => {
     const bin = atob(t);
@@ -120,7 +130,10 @@ export function loadB64Image(url, mime) {
       img.onerror = () => rej(new Error('failed to decode image ' + url));
       img.src = objUrl;
     });
-  }).catch(() => proceduralCanvas(url));
+  }).catch(() => {
+    console.info('[ballista] using procedural texture for', url);
+    return proceduralCanvas(url);
+  }).catch(() => solidCanvas(url));
 }
 
 export function canvasTexture(gl, canvas) {

@@ -10,7 +10,7 @@ export class Chart {
     this.dpr = Math.min(window.devicePixelRatio || 1, 2);
   }
 
-  setData(samples) { this.samples = samples || []; this.draw(); }
+  setData(samples) { this.samples = samples || []; this._base = null; this.draw(); }
   setPlayhead(t) { this.playT = t; this.draw(); }
 
   draw() {
@@ -19,8 +19,33 @@ export class Chart {
     if (!w || !h) return;
     if (cv.width !== w * this.dpr || cv.height !== h * this.dpr) {
       cv.width = w * this.dpr; cv.height = h * this.dpr;
+      this._base = null;
     }
+    if (!this._base) this._renderBase(w, h);
     const g = this.ctx;
+    g.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    g.clearRect(0, 0, w, h);
+    g.drawImage(this._base, 0, 0, w, h);
+    const s = this.samples;
+    if (this.playT != null && s.length) {
+      const tMax = Math.max(s[s.length - 1].t, 1e-6);
+      if (this.playT <= tMax) {
+        const padL = 46, padR = 46, padT = 22, padB = 20;
+        const iw = w - padL - padR, ih = h - padT - padB;
+        const xx = padL + (this.playT / tMax) * iw;
+        g.strokeStyle = 'rgba(255,255,255,0.75)';
+        g.lineWidth = 1;
+        g.beginPath(); g.moveTo(xx, padT); g.lineTo(xx, padT + ih); g.stroke();
+      }
+    }
+  }
+
+  // grid + axes + series, rendered once per data/size change into an offscreen canvas
+  _renderBase(w, h) {
+    const off = document.createElement('canvas');
+    off.width = Math.max(1, Math.round(w * this.dpr));
+    off.height = Math.max(1, Math.round(h * this.dpr));
+    const g = off.getContext('2d');
     g.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     g.clearRect(0, 0, w, h);
     g.fillStyle = 'rgba(10,14,22,0.0)';
@@ -89,13 +114,7 @@ export class Chart {
       }
       g.stroke();
     }
-    // playhead
-    if (this.playT != null && this.playT <= tMax) {
-      const xx = x(this.playT);
-      g.strokeStyle = 'rgba(255,255,255,0.75)';
-      g.lineWidth = 1;
-      g.beginPath(); g.moveTo(xx, padT); g.lineTo(xx, padT + ih); g.stroke();
-    }
+    this._base = off;
   }
 
   _fmt(v) {

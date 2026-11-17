@@ -11,11 +11,10 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ItemEnchantments;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -36,9 +35,7 @@ public class ElectricFieldHandler {
         if (!boots.is(ModItems.COPPER_BOOTS.get())) {
             return;
         }
-        ItemEnchantments enchantments =
-                boots.getOrDefault(net.minecraft.core.component.DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
-        int fieldLevel = enchantments.getLevel(ModEnchantments.ELECTRIC_FIELD);
+        int fieldLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.ELECTRIC_FIELD, boots);
         if (fieldLevel <= 0) {
             return;
         }
@@ -71,7 +68,7 @@ public class ElectricFieldHandler {
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     SoundEvents.AMETHYST_BLOCK_CHIME,
                     SoundSource.PLAYERS, 0.4F, 1.8F);
-            boots.hurtAndBreak(1, player, e -> e.broadcastBreakEvent(EquipmentSlot.FEET));
+            boots.hurtAndBreak(1, player, EquipmentSlot.FEET);
         }
     }
 }

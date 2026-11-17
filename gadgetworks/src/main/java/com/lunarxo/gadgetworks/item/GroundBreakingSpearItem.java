@@ -2,31 +2,33 @@ package com.lunarxo.gadgetworks.item;
 
 import java.util.List;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 import com.lunarxo.gadgetworks.Gadgetworks;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3f;
 
 public class GroundBreakingSpearItem extends SwordItem {
     private static final double SLAM_RADIUS = 3.5D;
@@ -49,7 +51,7 @@ public class GroundBreakingSpearItem extends SwordItem {
         if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
             List<Mob> targets = serverLevel.getEntitiesOfClass(Mob.class,
                     player.getBoundingBox().inflate(SLAM_RADIUS),
-                    e -> e != player && e.isAlive());
+                    e -> !e.is(player) && e.isAlive());
             for (Mob mob : targets) {
                 mob.hurt(player.damageSources().playerAttack(player), SLAM_DAMAGE);
                 Vec3 away = mob.position().subtract(player.position());
@@ -64,7 +66,7 @@ public class GroundBreakingSpearItem extends SwordItem {
                         player.getZ() + Math.sin(angle) * SLAM_RADIUS * 0.7D,
                         3, 0.1D, 0.1D, 0.1D, 0.0D);
             }
-            serverLevel.sendParticles(ParticleTypes.DUST,
+            serverLevel.sendParticles((ParticleOptions) new DustParticleOptions(new Vector3f(0.6F, 0.4F, 0.2F), 1.5F),
                     player.getX(), player.getY() + 0.3D, player.getZ(),
                     40, SLAM_RADIUS * 0.5D, 0.2D, SLAM_RADIUS * 0.5D, 0.0D);
             serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
@@ -77,13 +79,12 @@ public class GroundBreakingSpearItem extends SwordItem {
     }
 
     @Override
-    public Multimap<Holder<Attribute>, AttributeModifier> getDefaultAttributeModifiers(ItemStack stack) {
-        Multimap<Holder<Attribute>, AttributeModifier> modifiers = HashMultimap.create();
-        modifiers.putAll(super.getDefaultAttributeModifiers(stack));
-        modifiers.put(Attributes.ENTITY_INTERACTION_RANGE,
-                new AttributeModifier(Gadgetworks.id("spear_reach"), 2.0D,
-                        AttributeModifier.Operation.ADD_VALUE));
-        return modifiers;
+    public ItemAttributeModifiers getDefaultAttributeModifiers(ItemStack stack) {
+        return super.getDefaultAttributeModifiers(stack)
+                .withModifierAdded(Attributes.ENTITY_INTERACTION_RANGE,
+                        new AttributeModifier(Gadgetworks.id("spear_reach"), 2.0D,
+                                AttributeModifier.Operation.ADD_VALUE),
+                        EquipmentSlotGroup.MAINHAND);
     }
 
     @Override

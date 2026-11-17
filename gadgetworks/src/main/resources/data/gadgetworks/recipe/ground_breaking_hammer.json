@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "I",
-    "I",
-    "S"
+    "III",
+    "III",
+    " S "
   ],
   "key": {
-    "I": {"item": "minecraft:iron_ingot"},
+    "I": {"item": "minecraft:iron_block"},
     "S": {"item": "minecraft:stick"}
   },
   "result": {
-    "id": "gadgetworks:ground_breaking_spear",
+    "id": "gadgetworks:ground_breaking_hammer",
     "count": 1
   }
 }

@@ -4,7 +4,8 @@ import com.lunarxo.gadgetworks.Gadgetworks;
 import com.lunarxo.gadgetworks.item.CopperBootsItem;
 import com.lunarxo.gadgetworks.item.ElectricSwordItem;
 import com.lunarxo.gadgetworks.item.GrapplingHookItem;
-import com.lunarxo.gadgetworks.item.GroundBreakingSpearItem;
+import com.lunarxo.gadgetworks.item.FrostbrandAxeItem;
+import com.lunarxo.gadgetworks.item.GroundBreakingHammerItem;
 import com.lunarxo.gadgetworks.item.MagneticDoubleSwordItem;
 import com.lunarxo.gadgetworks.item.RedstoneStaffItem;
 import com.lunarxo.gadgetworks.item.RedstoneSparkItem;
@@ -32,8 +33,11 @@ public class ModItems {
     public static final DeferredItem<SwordItem> MAGNETIC_DOUBLE_SWORD = ITEMS.register("magnetic_double_sword",
             MagneticDoubleSwordItem::new);
 
-    public static final DeferredItem<SwordItem> GROUND_BREAKING_SPEAR = ITEMS.register("ground_breaking_spear",
-            GroundBreakingSpearItem::new);
+    public static final DeferredItem<SwordItem> GROUND_BREAKING_HAMMER = ITEMS.register("ground_breaking_hammer",
+            GroundBreakingHammerItem::new);
+
+    public static final DeferredItem<FrostbrandAxeItem> FROSTBRAND_AXE = ITEMS.register("frostbrand_axe",
+            FrostbrandAxeItem::new);
 
     public static final DeferredItem<RedstoneStaffItem> REDSTONE_STAFF = ITEMS.register("redstone_staff",
             RedstoneStaffItem::new);

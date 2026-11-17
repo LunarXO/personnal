@@ -1,5 +1,7 @@
 package com.lunarxo.gadgetworks.item;
 
+import java.util.List;
+
 import com.lunarxo.gadgetworks.registry.ModComponents;
 
 import net.minecraft.ChatFormatting;
@@ -21,10 +23,9 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.List;
-
 public class MagneticDoubleSwordItem extends SwordItem {
     private static final double FIELD_RANGE = 6.0D;
+    private static final double ACTIVE_RANGE = 8.0D;
 
     public MagneticDoubleSwordItem() {
         super(Tiers.IRON, new Item.Properties().durability(750));
@@ -48,7 +49,32 @@ public class MagneticDoubleSwordItem extends SwordItem {
                     SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 0.8F, north ? 1.2F : 0.7F);
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
         }
-        return InteractionResultHolder.pass(stack);
+
+        player.getCooldowns().addCooldown(this, 30);
+        if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
+            boolean north = isNorthSide(stack);
+            List<Mob> nearby = serverLevel.getEntitiesOfClass(Mob.class,
+                    player.getBoundingBox().inflate(ACTIVE_RANGE),
+                    e -> e.isAlive() && !e.isAlliedTo(player));
+
+            for (Mob mob : nearby) {
+                if (north) {
+                    Vec3 toPlayer = player.position().subtract(mob.position());
+                    mob.addDeltaMovement(toPlayer.normalize().scale(1.2D).add(0.0D, 0.15D, 0.0D));
+                } else {
+                    Vec3 away = mob.position().subtract(player.position());
+                    mob.addDeltaMovement(away.normalize().scale(1.4D).add(0.0D, 0.35D, 0.0D));
+                }
+                serverLevel.sendParticles(ParticleTypes.ELECTRIC_SPARK,
+                        mob.getX(), mob.getY() + mob.getBbHeight() * 0.5D, mob.getZ(),
+                        4, 0.1D, 0.1D, 0.1D, 0.05D);
+            }
+
+            serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.PLAYERS, 0.8F, north ? 1.3F : 0.6F);
+            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+        }
+        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }
 
     @Override
@@ -88,5 +114,6 @@ public class MagneticDoubleSwordItem extends SwordItem {
         tooltip.add(Component.translatable(isNorthSide(stack)
                 ? "tooltip.gadgetworks.magnetic_side_north"
                 : "tooltip.gadgetworks.magnetic_side_south").withStyle(ChatFormatting.GOLD));
+        tooltip.add(Component.translatable("tooltip.gadgetworks.magnetic_double_sword_active").withStyle(ChatFormatting.GRAY));
     }
 }

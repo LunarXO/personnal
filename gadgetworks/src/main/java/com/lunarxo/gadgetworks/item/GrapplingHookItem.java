@@ -1,9 +1,17 @@
 package com.lunarxo.gadgetworks.item;
 
+import java.util.List;
+
+import com.lunarxo.gadgetworks.registry.ModComponents;
+
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,8 +24,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.List;
-
 public class GrapplingHookItem extends Item {
     private static final double MAX_RANGE = 32.0D;
 
@@ -27,7 +33,7 @@ public class GrapplingHookItem extends Item {
 
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BOW;
+        return UseAnim.SPYGLASS;
     }
 
     @Override
@@ -39,37 +45,64 @@ public class GrapplingHookItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         HitResult hit = player.pick(MAX_RANGE, 1.0F, false);
-        if (hit.getType() == HitResult.Type.MISS) {
+        if (hit.getType() == HitResult.Type.MISS || !(hit instanceof net.minecraft.world.phys.BlockHitResult blockHit)) {
             return InteractionResultHolder.fail(stack);
         }
 
-        Vec3 target = hit.getLocation();
-        Vec3 toTarget = target.subtract(player.getEyePosition());
-        double distance = toTarget.length();
-        Vec3 direction = toTarget.normalize();
-
-        double speed = Math.min(1.6D, 0.45D + distance * 0.05D);
-        Vec3 launch = direction.scale(speed).add(0.0D, 0.25D, 0.0D);
-        player.setDeltaMovement(launch);
-        player.resetFallDistance();
-        player.getCooldowns().addCooldown(this, 20);
-        player.awardStat(net.minecraft.stats.Stats.ITEM_USED.get(this));
+        BlockPos target = blockHit.getBlockPos();
+        stack.set(ModComponents.GRAPPLE_TARGET.get(), target);
+        player.startUsingItem(hand);
+        player.awardStat(Stats.ITEM_USED.get(this));
 
         if (!level.isClientSide) {
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     SoundEvents.CHAIN_HIT, SoundSource.PLAYERS, 1.0F, 0.8F);
-            if (level instanceof net.minecraft.server.level.ServerLevel serverLevel) {
-                Vec3 from = player.getEyePosition();
-                int steps = (int) (distance / 0.5D);
-                for (int i = 0; i < steps; i++) {
-                    Vec3 p = from.add(toTarget.scale(i / (double) steps));
-                    serverLevel.sendParticles(net.minecraft.core.particles.ParticleTypes.CRIT,
-                            p.x, p.y, p.z, 1, 0.0D, 0.0D, 0.0D, 0.0D);
-                }
-            }
             stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
         }
-        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+        return InteractionResultHolder.consume(stack);
+    }
+
+    @Override
+    public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int remainingTick) {
+        BlockPos target = stack.get(ModComponents.GRAPPLE_TARGET.get());
+        if (target == null) {
+            entity.stopUsingItem();
+            return;
+        }
+
+        Vec3 center = Vec3.atCenterOf(target);
+        Vec3 toTarget = center.subtract(entity.position());
+        double distance = toTarget.length();
+
+        if (distance < 1.5D) {
+            finishPull(entity, stack);
+            return;
+        }
+
+        Vec3 pull = toTarget.normalize().scale(Math.min(1.1D, 0.35D + distance * 0.04D));
+        entity.setDeltaMovement(pull);
+        entity.resetFallDistance();
+
+        if (!level.isClientSide && level instanceof ServerLevel serverLevel
+                && entity.tickCount % 2 == 0) {
+            serverLevel.sendParticles(ParticleTypes.CRIT,
+                    entity.getX() + pull.x, entity.getY() + 0.5D, entity.getZ() + pull.z,
+                    2, 0.1D, 0.1D, 0.1D, 0.0D);
+        }
+    }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
+        finishPull(entity, stack);
+    }
+
+    private void finishPull(LivingEntity entity, ItemStack stack) {
+        stack.remove(ModComponents.GRAPPLE_TARGET.get());
+        entity.stopUsingItem();
+        entity.resetFallDistance();
+        if (entity instanceof Player player) {
+            player.getCooldowns().addCooldown(this, 15);
+        }
     }
 
     @Override

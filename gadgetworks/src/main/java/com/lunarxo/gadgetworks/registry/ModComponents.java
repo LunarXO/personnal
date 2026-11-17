@@ -17,6 +17,12 @@ public class ModComponents {
                     .networkSynchronized(net.minecraft.network.codec.ByteBufCodecs.BOOL)
                     .build());
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<net.minecraft.core.BlockPos>> GRAPPLE_TARGET =
+            COMPONENTS.register("grapple_target", () -> DataComponentType.<net.minecraft.core.BlockPos>builder()
+                    .persistent(net.minecraft.core.BlockPos.CODEC)
+                    .networkSynchronized(net.minecraft.core.BlockPos.STREAM_CODEC)
+                    .build());
+
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> STAFF_MODE =
             COMPONENTS.register("staff_mode", () -> DataComponentType.<Integer>builder()
                     .persistent(com.mojang.serialization.Codec.intRange(0, 3))

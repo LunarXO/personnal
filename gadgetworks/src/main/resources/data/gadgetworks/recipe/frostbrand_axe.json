@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "II",
+    "IS",
+    " S"
+  ],
+  "key": {
+    "I": {"item": "minecraft:packed_ice"},
+    "S": {"item": "minecraft:stick"}
+  },
+  "result": {
+    "id": "gadgetworks:frostbrand_axe",
+    "count": 1
+  }
+}

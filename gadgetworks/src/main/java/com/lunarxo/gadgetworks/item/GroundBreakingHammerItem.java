@@ -2,23 +2,20 @@ package com.lunarxo.gadgetworks.item;
 
 import java.util.List;
 
-import com.lunarxo.gadgetworks.Gadgetworks;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -29,17 +26,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 
-public class GroundBreakingSpearItem extends SwordItem {
+public class GroundBreakingHammerItem extends SwordItem {
     private static final double SLAM_RADIUS = 3.5D;
     private static final float SLAM_DAMAGE = 5.0F;
 
-    public GroundBreakingSpearItem() {
+    public GroundBreakingHammerItem() {
         super(Tiers.IRON, new Item.Properties().durability(1024).attributes(
-                SwordItem.createAttributes(Tiers.IRON, 4, -2.8F)
-                        .withModifierAdded(Attributes.ENTITY_INTERACTION_RANGE,
-                                new AttributeModifier(Gadgetworks.id("spear_reach"), 2.0D,
-                                        AttributeModifier.Operation.ADD_VALUE),
-                                EquipmentSlotGroup.MAINHAND)));
+                SwordItem.createAttributes(Tiers.IRON, 5, -3.2F)));
     }
 
     @Override
@@ -50,7 +43,7 @@ public class GroundBreakingSpearItem extends SwordItem {
         }
 
         player.getCooldowns().addCooldown(this, 100);
-        player.awardStat(net.minecraft.stats.Stats.ITEM_USED.get(this));
+        player.awardStat(Stats.ITEM_USED.get(this));
 
         if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
             List<Mob> targets = serverLevel.getEntitiesOfClass(Mob.class,
@@ -84,6 +77,6 @@ public class GroundBreakingSpearItem extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("tooltip.gadgetworks.ground_breaking_spear").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tooltip.gadgetworks.ground_breaking_hammer").withStyle(ChatFormatting.GRAY));
     }
 }

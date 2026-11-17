@@ -1,0 +1,35 @@
+{
+  "itemGroup.gadgetworks.gadgetworks_tab": "Gadgetworks",
+
+  "item.gadgetworks.copper_boots": "Copper Boots",
+  "item.gadgetworks.grappling_hook": "Grappling Hook",
+  "item.gadgetworks.electric_sword": "Electric Sword",
+  "item.gadgetworks.magnetic_double_sword": "Magnetic Double Sword",
+  "item.gadgetworks.ground_breaking_spear": "Ground Breaking Spear",
+  "item.gadgetworks.redstone_staff": "Redstone Staff",
+  "item.gadgetworks.redstone_spark": "Redstone Spark",
+  "item.gadgetworks.mini_redstone_golem_spawn_egg": "Mini Redstone Golem Spawn Egg",
+
+  "entity.gadgetworks.mini_redstone_golem": "Mini Redstone Golem",
+  "entity.gadgetworks.redstone_spark": "Redstone Spark",
+
+  "enchantment.gadgetworks.electric_field": "Electric Boots",
+
+  "enchantment.gadgetworks.electric_field.desc": "Surrounds the wearer with an electric field that shocks nearby hostile mobs. Only fits Copper Boots.",
+
+  "tooltip.gadgetworks.grappling_hook": "Right-click a block within 32 blocks to grapple to it.",
+  "tooltip.gadgetworks.electric_sword": "Strikes arc lightning to up to 3 nearby mobs.",
+  "tooltip.gadgetworks.magnetic_double_sword": "Sneak + right-click to flip the blade.",
+  "tooltip.gadgetworks.magnetic_side_north": "Side: North Pole (pulls mobs in)",
+  "tooltip.gadgetworks.magnetic_side_south": "Side: South Pole (pushes mobs away)",
+  "tooltip.gadgetworks.ground_breaking_spear": "Right-click on the ground to slam a shockwave. +2 block reach.",
+  "tooltip.gadgetworks.redstone_staff": "Sneak + right-click to cycle modes. Right-click to use.",
+
+  "message.gadgetworks.staff_mode_summon": "Staff mode: Summon Golem",
+  "message.gadgetworks.staff_mode_recall": "Staff mode: Recall Golems",
+  "message.gadgetworks.staff_mode_zap": "Staff mode: Redstone Zap",
+  "message.gadgetworks.staff_mode_pulse": "Staff mode: Static Pulse",
+  "message.gadgetworks.golem_limit": "You already control 3 mini redstone golems.",
+  "message.gadgetworks.magnetic_north": "Blade flipped: North Pole (pull)",
+  "message.gadgetworks.magnetic_south": "Blade flipped: South Pole (push)"
+}

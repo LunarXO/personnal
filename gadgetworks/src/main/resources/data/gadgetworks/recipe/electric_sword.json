@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " L ",
+    " C ",
+    " S "
+  ],
+  "key": {
+    "L": {"item": "minecraft:lightning_rod"},
+    "C": {"item": "minecraft:copper_ingot"},
+    "S": {"item": "minecraft:stick"}
+  },
+  "result": {
+    "id": "gadgetworks:electric_sword",
+    "count": 1
+  }
+}
